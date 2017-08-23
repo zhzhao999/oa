@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/task
+   		http://www.springframework.org/schema/task/spring-task.xsd">
+   		
+   	
+<!-- 配置需要定时执行的任务类以及方法 -->  
+    <bean id="doJob"  
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+        <!-- 指定任务类 -->  
+        <property name="targetObject" ref="cleanDataServiceImpl" />  
+        <!-- 指定任务执行的方法 -->  
+        <property name="targetMethod" value="execute" />  
+    </bean>  
+      
+    <!-- 配置触发器 -->  
+    <bean id="jobTrigger"  
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+        <property name="jobDetail" ref="doJob" />  
+        <!-- 每10秒运行一次 -->  
+        <property name="cronExpression" value="0/60 * * * * ?" /><!-- 每隔10秒钟触发一次 -->  
+    </bean>  
+  
+    <!-- 触发定时任务 -->  
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="triggers">  
+            <list>  
+                <ref bean="jobTrigger" /><!-- 此处可以配置多个触发器 -->  
+            </list>  
+        </property>  
+    </bean>  
+	
+</beans>
