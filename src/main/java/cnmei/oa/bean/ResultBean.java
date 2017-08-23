@@ -7,6 +7,8 @@ public class ResultBean {
 		return code;
 	}
 	
+	
+	
 	/**
 	 * 状态码  0=false 1=true
 	 * @param code
