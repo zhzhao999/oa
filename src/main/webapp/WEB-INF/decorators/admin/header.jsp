@@ -9,7 +9,18 @@
 						<%-- <img src="${ctx}/static/assets/img/headers/c-logo.png" height="50" /> --%>
 						&nbsp;&nbsp;<span class="tel"> 人资档案系统</span>
 						<div class="navbar-top-right">
-							<span id="greeting">您好！</span> <span class="cutline"></span>
+							<span id="adminUserName"></span>
+							<script type="text/javascript">
+								$(function(){
+									var adminName = '${adminName }';
+									if(adminName ==""||adminName == null){
+										window.location.href= '${ctx}/user/logout';
+									}else{
+										$("#adminUserName").text(adminName);
+									}
+								})
+							</script>
+							<span id="greeting"> :您好！</span> <span class="cutline"></span>
 							<div class="msginfo">
 								<a href="javascript:void(0)" id="msgtext">消息<span
 									id="msgNum">0</span></a>

@@ -1,6 +1,7 @@
 package cnmei.oa.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,8 @@ public class UserController {
 	public String userLogin(User user,HttpServletRequest request){
 		boolean login = userService.login(user);
 		if (login) {
+			HttpSession session = request.getSession();
+			session.setAttribute("adminName", user.getName());
 			return "redirect:/showHomepage";
 		}else{
 			request.setAttribute("errorMsg", "用户名或密码错误");
@@ -42,6 +45,7 @@ public class UserController {
 	
 	@RequestMapping("/user/logout")
 	public String userLogout(User user,HttpServletRequest request){
+		request.getSession().invalidate();
 		return "jsp/login";
 	}
 	
