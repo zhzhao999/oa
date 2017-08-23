@@ -4,6 +4,7 @@
 		<pattern>/static/*</pattern>
 		<pattern>/images/*</pattern>
 		<pattern>/user/login</pattern>
+		<pattern>/user/logout</pattern>
 		<pattern>/showLogin</pattern>
 	</excludes>
 	

@@ -18,7 +18,7 @@
 								</div>
 							</div>
 							<span class="cutline"></span> <a href="#" id="changePwd">修改密码</a>
-							<span class="cutline"></span> <a href="${ctx}/logout">退出登录</a>
+							<span class="cutline"></span> <a href="${ctx}/user/logout">退出登录</a>
 						</div>
 					</div>
 				</div>

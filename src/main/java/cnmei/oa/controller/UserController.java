@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.User;
 import cnmei.oa.service.UserService;
 
@@ -31,12 +29,6 @@ public class UserController {
 		return "decorators/homepage";
 	}
 	
-	/**
-	 * 用户登录
-	 * @param user
-	 * @param request
-	 * @return
-	 */
 	@RequestMapping("/user/login")
 	public String userLogin(User user,HttpServletRequest request){
 		boolean login = userService.login(user);
@@ -46,6 +38,11 @@ public class UserController {
 			request.setAttribute("errorMsg", "用户名或密码错误");
 			return "jsp/login";
 		}
+	}
+	
+	@RequestMapping("/user/logout")
+	public String userLogout(User user,HttpServletRequest request){
+		return "jsp/login";
 	}
 	
 }
