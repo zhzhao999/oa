@@ -31,6 +31,12 @@ public class UserController {
 		return "decorators/homepage";
 	}
 	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user/login")
 	public String userLogin(User user,HttpServletRequest request){
 		boolean login = userService.login(user);
