@@ -39,6 +39,7 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("adminName", user.getName());
 			return "redirect:/showHomepage";
+			
 		}else{
 			request.setAttribute("errorMsg", "用户名或密码错误");
 			return "jsp/login";
