@@ -6,6 +6,7 @@
 
 <script src="${ctx }/js/jquery.min.js"></script>
 <script src="${ctx }/js/common.js"></script>
+<script src="${ctx }/js/layer.js"></script>
 <script src="${ctx}/static/legacy/js/bootstrap-validation/validate.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/bootstrap-validation/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/bootstrap.js"></script>

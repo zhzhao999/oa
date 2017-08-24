@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
 		if (u != null) {
 			HttpSession session = request.getSession();
 			user.setPassword("");
-			session.setAttribute("userId", user.getId());
-			session.setAttribute("userName", user.getName());
+			session.setAttribute("userId", u.getId());
+			session.setAttribute("userName", u.getName());
 			return true;
 		}
 		return false;
