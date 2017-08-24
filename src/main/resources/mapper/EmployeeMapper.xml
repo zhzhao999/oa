@@ -7,7 +7,7 @@
 		<result column="password" property="password" jdbcType="VARCHAR" />
 	</resultMap> -->
 
-	<select id="addEmployee" parameterType="cnmei.oa.pojo.Employee">
+	<insert id="addEmployee" parameterType="cnmei.oa.pojo.Employee">
 		insert into t_employee
 			(name,gender,nation,
 			birthday,zodiac,card_id,
@@ -26,10 +26,48 @@
         	#{entry_date},#{probation},#{regular_date},
         	#{contract_year},#{contract_end_date},
         	#{department},#{job},#{on_job})
-	</select>
+	</insert>
 	
 	<select id="findAll" resultType="cnmei.oa.pojo.Employee">
 		select * from t_employee where on_job = 1
 	</select>
+	
+	<select id="findOne" parameterType="String" resultType="cnmei.oa.pojo.Employee">
+		select * from t_employee where id = #{id}
+	</select>
 
+	
+	<update id="updateById" parameterType="cnmei.oa.pojo.Employee">
+		update t_employee set 
+			name = #{name}, gender = #{gender},nation = #{nation},
+			birthday = #{birthday}, zodiac = #{zodiac},card_id = #{card_id},
+        	telephone = #{telephone}, qq = #{qq},email = #{email},
+        	education = #{education}, school = #{school}, major = #{major},
+        	level = #{level}, post_level = #{post_level},salary = #{salary},
+        	entry_date= #{entry_date},probation=  #{probation},regular_date = #{regular_date},
+        	contract_year= #{contract_year},contract_end_date = #{contract_end_date},
+        	department= #{department},job = #{job}
+		where id = #{id} 
+	</update>
+	
+	<update id="deleteEm" parameterType="String">
+		update t_employee set on_job = 0 where id = #{id}
+	</update>
+
+	<select id="findSearch" parameterType="HashMap" resultType="cnmei.oa.pojo.Employee">
+		select * from t_employee
+        <where>
+	       <choose>
+	       		<when test="name != null">
+	            	name like CONCAT('%',#{name},'%')
+	           	</when>
+	           	<when test="startTime != null">
+	            	stuAge> #{stuAge}
+	           	</when>
+			<otherwise>
+			    1=1
+			</otherwise>
+	       </choose>
+        </where>
+	</select>
 </mapper>

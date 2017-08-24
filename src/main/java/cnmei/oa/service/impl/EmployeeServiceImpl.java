@@ -2,6 +2,7 @@ package cnmei.oa.service.impl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,46 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> findAll() {
-		
 		return employeeMapper.findAll();
 	}
 
+	@Override
+	public Employee findOnd(String id) {
+		return employeeMapper.findOne(id);
+	}
+	
+	@Override
+	public void updateEm(Employee em){
+		//获取生肖
+		Date birthday = em.getBirthday();
+		if (birthday != null) {
+			String zodiac = ZodiacUtils.getZodiac(birthday);
+			em.setZodiac(zodiac);
+		}
+		//根据入职日期 试用期 合同年限 计算 转正日期及合同终止日期
+		Date eDate = em.getEntry_date();//入职日期
+		int pro = em.getProbation();//试用期时长
+		int conYear = em.getContract_year();//合同年限
+		if (eDate != null) {
+			if (pro != 0) {
+				Date regDate = DateUtils.getParseDate(eDate, Calendar.MONTH, pro);
+				em.setRegular_date(regDate);
+			}
+			if (conYear != 0) {
+				Date conDate = DateUtils.getParseDate(eDate, Calendar.YEAR, pro);
+				em.setContract_end_date(conDate);
+			}
+		}
+		employeeMapper.updateById(em);
+	}
+	
+	@Override
+	public void deleteEm(String id){
+		employeeMapper.deleteEm(id);
+	}
+
+	@Override
+	public List<Employee> findSearch(HashMap<String, Object> params) {
+		return employeeMapper.findSearch(params);
+	}
 }

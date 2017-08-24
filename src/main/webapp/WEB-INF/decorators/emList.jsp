@@ -18,17 +18,17 @@
 		<div class="panel-body">
             <div class="subtt appearance-style">
             	<div class="col-md-10 mt10 text-left">
-				<form class="form-inline" >
+				<form class="form-inline" action="${ctx }/employee/showSearchList" >
 					<div class="form-group">
-				          <input type="text" class="form-control input-sm" id="name" name="search_LIKE_name" placeholder="按名称查询" value=""/>
+				          <input type="text" class="form-control input-sm" name="name" placeholder="按名称查询" value="${param.name }"/>
 			        </div>
 			        <div class="form-group form-group-sm"> 
                         <label>入职时间</label>
                         <div class="input-group">
-                        <input type="text" class="form-control" id="search_GTE_createTime" name="search_GTE_createTime" value="${param.search_GTE_createTime }" 
+                        <input type="text" class="form-control" name="startTime" value="${param.startTime }" 
                             onfocus="WdatePicker({lang:'zh-cn'})">
                         <div class="input-group-addon">至</div>
-                        <input type="text" class="form-control" id="search_LTE_createTime" name="search_LTE_createTime" value="${param.search_LTE_createTime }" 
+                        <input type="text" class="form-control"  name="endTime" value="${param.endTime }" 
                             onfocus="WdatePicker({lang:'zh-cn'})">
                         </div>
                     </div> 
@@ -58,8 +58,9 @@
 			           	<td><fmt:formatDate value="${em.birthday }" pattern="yyyy-MM-dd"/></td>
 		                <td>
 							<div class="btn-group" role="group" aria-label="...">
-								<a id="look" href="${ctx }/employee/emDetail/${em.id }" class="btn btn-default btn-sm">查看</a>
-									<a href="javascript:if(confirm('确实要删除该员工吗?'))location='${ctx }/employee/deleteEm/${item.id}'" class="btn btn-default btn-sm">删除</a>
+								<a id="look" href="${ctx }/employee/showDetail/${em.id }" class="btn btn-default btn-sm">查看</a>
+								<a id="look" href="${ctx }/employee/showUpdate/${em.id }" class="btn btn-default btn-sm">修改</a>
+								<a href="javascript:if(confirm('确实要删除该员工吗?'))location='${ctx }/employee/deleteEm/${em.id}'" class="btn btn-default btn-sm">删除</a>
 							</div>
 		                </td>
 			        </tr>
@@ -69,10 +70,5 @@
         </div>
 	</div>
 
-<script type="text/javascript">
-$(function() {
-    menu.active('#package-manage');
-});
-</script>        
 </body>
 </html>

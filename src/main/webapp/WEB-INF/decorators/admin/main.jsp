@@ -17,7 +17,6 @@
 <link href="${ctx}/static/legacy/css/style.css" rel="stylesheet" />
 <link href="${ctx}/static/legacy/css/usercenter.css" rel="stylesheet" />
 <link href="${ctx}/static/legacy/css/menu.css" rel="stylesheet" /><!-- 头部和左侧菜单样式 -->
-<link href="${ctx}/static/legacy/css/layer.css" rel="stylesheet" />
 
 <style type="text/css">
 .navbar-brand {width:500px;line-height: 70px;padding-left:170px;color:#fff;}

@@ -3,9 +3,18 @@
 <script src="${ctx }/static/legacy/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 <link href="${ctx }/static/legacy/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 
-<div class="modal-header">
-	<h4 class="modal-title" >员工信息添加</h4>
+<head>
+    <title>员工管理</title>
+</head>
+<div class="panel panel-default">                    
+	<div class="panel-heading">
+	    <ul class="breadcrumb">
+	      <li><span class="glyphicon glyphicon-home"></span> 员工管理</li>
+	      <li class="active">员工信息添加</li>
+	    </ul>
+	</div>
 </div>
+
 <form id="inputForm" action="${ctx}/employee/saveEmployee" method="post" class="form-horizontal">
 	<div class="modal-body">
 		<p class="alert alert-danger hide"></p>
@@ -73,9 +82,9 @@
 			<label class="col-sm-2 control-label"><font color="red">*</font>合同年限:</label>
 			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="contract_year">
+					<option value="2">两年</option>
 					<option value="3">三年</option>
 					<option value="5">五年</option>
-					<option value="10">十年</option>
 				</select>
 			</div>
 		</div>
