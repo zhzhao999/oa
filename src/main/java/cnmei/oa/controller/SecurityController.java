@@ -1,5 +1,7 @@
 package cnmei.oa.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,9 +31,16 @@ public class SecurityController {
 		HttpSession session = request.getSession();
 		Integer  id =(Integer) session.getAttribute("userId");
 		String  name =(String) session.getAttribute("userName");
-		User user = new User(id, name, MD5Utils.md5(oldPwd));
+		User user = new User(id, name, MD5Utils.md5(oldPwd),new Date());
 		return userService.findUser(user);
 	}
+	
+	@RequestMapping(value="checkUserName")
+	@ResponseBody
+	public boolean CheckUserName(String yhName,HttpServletRequest request) {
+		return userService.findUserByName(yhName);
+	}
+	
 	
 	@RequestMapping("changePassword")
 	@ResponseBody
@@ -39,7 +48,7 @@ public class SecurityController {
 		HttpSession session = request.getSession();
 		Integer  id =(Integer) session.getAttribute("userId");
 		String  name =(String) session.getAttribute("userName");
-		User user = new User(id, name, MD5Utils.md5(password));
+		User user = new User(id, name, MD5Utils.md5(password),new Date());
 		boolean b = userService.ChangePassword(user);
 		ResultBean resultBean = new ResultBean();
 		if(b){
