@@ -35,7 +35,6 @@ public class UserController {
 	public String userLogin(User user,HttpServletRequest request){
 		boolean login = userService.login(user,request);
 		if (login) {
-			
 			return "redirect:/showHomepage";
 			
 		}else{
