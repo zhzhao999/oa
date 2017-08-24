@@ -48,11 +48,11 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>毕业院校:</label>
 			<div class="col-sm-3 has-feedback">
-				<input type="password" class="form-control" name="school" /> 
+				<input type="text" class="form-control" name="school" /> 
 			</div>
 			<label class="col-sm-1 control-label"><font color="red">*</font>专业:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="password" class="form-control" name="major" /> 
+				<input type="text" class="form-control" name="major" /> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">

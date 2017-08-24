@@ -37,6 +37,7 @@ public class UserController {
 		if (login) {
 			
 			return "redirect:/showHomepage";
+			
 		}else{
 			request.setAttribute("errorMsg", "用户名或密码错误");
 			return "jsp/login";

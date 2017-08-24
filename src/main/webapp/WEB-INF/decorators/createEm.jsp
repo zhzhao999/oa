@@ -31,11 +31,11 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>出生日期:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control Wdate" id="birthday" name="birthday" onFocus="WdatePicker({lang:'zh-cn'})"/> 
+				<input type="text" class="form-control Wdate" name="birthday" onFocus="WdatePicker({lang:'zh-cn'})"/> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" id="card_id" name="card_id" /> 
+				<input type="text" class="form-control" name="card_id" /> 
 			</div>
 		</div>
 		
@@ -48,11 +48,11 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>毕业院校:</label>
 			<div class="col-sm-3 has-feedback">
-				<input type="password" class="form-control" name="school" /> 
+				<input type="text" class="form-control" name="school" /> 
 			</div>
 			<label class="col-sm-1 control-label"><font color="red">*</font>专业:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="password" class="form-control" name="major" /> 
+				<input type="text" class="form-control" name="major" /> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -88,7 +88,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>QQ号:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" id="qq" name="qq" /> 
+				<input type="text" class="form-control" name="qq" /> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>邮箱:</label>
 			<div class="col-sm-2 has-feedback">
@@ -118,7 +118,7 @@
  		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>税前新资:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="salary" /> 
+				<input type="text" class="form-control" name="salary" value="0"/> 
 			</div>
 		</div>
 	</div>

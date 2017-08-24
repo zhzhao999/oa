@@ -1,34 +1,42 @@
-package cnmei.oa.bean;
+package cnmei.oa.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 员工的所有信息
- */
-public class EmployeeAll {
-	private String name;//姓名
-	private String gender;//性别
-	private String nation;//民族
-	private Date birthday;//生日
-	private String card_id;//身份证号
-	private String education;//学历
-	private String school;//毕业院校
-	private String major;//专业
+public class Employee implements Serializable{
+	private static final long serialVersionUID = 3453109906124806310L;
+	
+	private int id;
+	private String name;
+	private String gender;
+	private String nation;
+	private Date birthday;
+	private String zodiac;
+	private String card_id;
+	private String telephone;
+	private String qq;
+	private String email;
+	private String education;
+	private String school;
+	private String major;
+	private String level;//职级
+	private String post_level;//岗位级别
+	private int salary;//新资
 	private Date entry_date;//入职日期
 	private int probation;//试用期
 	private Date regular_date;//转正日期
 	private int contract_year;//合同年限
 	private Date contract_end_date;//合同终止日期
-	private String telephone;//手机号
-	private String qq;//QQ号
-	private String email;//邮箱
 	private String department;//部门
-	private String job;//职位
-	private String level;//职级
-	private String post_level;//岗位级别
-	private String salary;//新资
+	private String job;//职务
+	private int on_job;
 	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -53,11 +61,35 @@ public class EmployeeAll {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	public String getZodiac() {
+		return zodiac;
+	}
+	public void setZodiac(String zodiac) {
+		this.zodiac = zodiac;
+	}
 	public String getCard_id() {
 		return card_id;
 	}
 	public void setCard_id(String card_id) {
 		this.card_id = card_id;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getEducation() {
 		return education;
@@ -76,6 +108,30 @@ public class EmployeeAll {
 	}
 	public void setMajor(String major) {
 		this.major = major;
+	}
+	public int getOn_job() {
+		return on_job;
+	}
+	public void setOn_job(int on_job) {
+		this.on_job = on_job;
+	}
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
+	public String getPost_level() {
+		return post_level;
+	}
+	public void setPost_level(String post_level) {
+		this.post_level = post_level;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 	public Date getEntry_date() {
 		return entry_date;
@@ -107,24 +163,6 @@ public class EmployeeAll {
 	public void setContract_end_date(Date contract_end_date) {
 		this.contract_end_date = contract_end_date;
 	}
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-	public String getQq() {
-		return qq;
-	}
-	public void setQq(String qq) {
-		this.qq = qq;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getDepartment() {
 		return department;
 	}
@@ -136,24 +174,6 @@ public class EmployeeAll {
 	}
 	public void setJob(String job) {
 		this.job = job;
-	}
-	public String getLevel() {
-		return level;
-	}
-	public void setLevel(String level) {
-		this.level = level;
-	}
-	public String getPost_level() {
-		return post_level;
-	}
-	public void setPost_level(String post_level) {
-		this.post_level = post_level;
-	}
-	public String getSalary() {
-		return salary;
-	}
-	public void setSalary(String salary) {
-		this.salary = salary;
 	}
 	
 }
