@@ -125,13 +125,15 @@
 	    var url = '${ctx}/security/changePassword';
 	    if (validator.form()) {
 		    $.post(url, $form.serialize(), function(data) {
-		        common.hideModal('#pwd-modal');
 		        var json = $.parseJSON(data);
-		        if (json.result) {
-		            common.showMessage('修改密码成功！')
+		        if (json.code==1) {
+		        	layer.msg("修改密码成功");
+		        	setTimeout(function(){
+		        		window.location.href="showHomepage"
+		        	}, 1000)
 		        } else {
-		            common.showMessage('修改密码失败！<br>原因：'+json.content, 'warn');
-		        }
+		            common.showMessage('修改密码失败！<br>原因：'+json.message, 'warn');
+		        } 
 		    });
 	    }
 	});

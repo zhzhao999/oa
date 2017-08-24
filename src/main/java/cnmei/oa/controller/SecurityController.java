@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
+
 import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.User;
 import cnmei.oa.service.UserService;
@@ -32,6 +34,7 @@ public class SecurityController {
 	}
 	
 	@RequestMapping("changePassword")
+	@ResponseBody
 	public String ChangePassword(String password,HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Integer  id =(Integer) session.getAttribute("userId");
