@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cnmei.oa.mapper.EmployeeMapper">
+	<!-- <resultMap id="BaseResultMap" type="cnmei.oa.pojo.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+	</resultMap> -->
+
+	<select id="addEmployee" parameterType="cnmei.oa.pojo.Employee">
+		insert into t_employee
+			(name,gender,nation,
+			birthday,zodiac,card_id,
+			telephone,qq,email,
+			education,school,major,
+			level,post_level,salary,
+			entry_date,probation,regular_date,
+			contract_year,contract_end_date,
+			department,job,on_job)
+        values 
+        	(#{name},#{gender},#{nation},
+        	#{birthday},#{zodiac},#{card_id},
+        	#{telephone},#{qq},#{email},
+        	#{education},#{school},#{major},
+        	#{level},#{post_level},#{salary},
+        	#{entry_date},#{probation},#{regular_date},
+        	#{contract_year},#{contract_end_date},
+        	#{department},#{job},#{on_job})
+	</select>
+
+</mapper>
