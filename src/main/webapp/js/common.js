@@ -30,7 +30,7 @@ common.shake = function(o){
 
 common.showModal = function(mId, _backdrop) {
 	var _backdrop = (typeof _backdrop != 'undefined')? _backdrop : 'static';
-	$(mId).modal({backdrop:_backdrop});
+	/*$(mId).modal({backdrop:_backdrop});*/
 }
 
 //验证反馈时间

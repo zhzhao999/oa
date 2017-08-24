@@ -10,5 +10,9 @@
 	<select id="findOne" resultMap="BaseResultMap" parameterType="cnmei.oa.pojo.User">
 		select * from t_user where name = #{name} and password = #{password}
 	</select>
+	
+	<update id="updatePwdById" parameterType="cnmei.oa.pojo.User">
+		update t_user set password=#{password} where id=#{id};
+	</update>
 
 </mapper>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import cnmei.oa.pojo.User;
 import cnmei.oa.service.UserService;
 
@@ -34,10 +33,9 @@ public class UserController {
 	
 	@RequestMapping("/user/login")
 	public String userLogin(User user,HttpServletRequest request){
-		boolean login = userService.login(user);
+		boolean login = userService.login(user,request);
 		if (login) {
-			HttpSession session = request.getSession();
-			session.setAttribute("adminName", user.getName());
+			
 			return "redirect:/showHomepage";
 		}else{
 			request.setAttribute("errorMsg", "用户名或密码错误");

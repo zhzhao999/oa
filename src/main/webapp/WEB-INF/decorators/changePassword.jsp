@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="/WEB-INF/jsp/common/jslib.jsp" %>
 
 	
 	<div id="pwd-modal" class="modal fade" tabindex="-1" role="dialog" 
@@ -7,7 +6,6 @@
 	   
 	    
 		<form id="pwd-form" class="form-horizontal">
-		  <zy:token/>
 	
 	      <div class="modal-header"> <!-- modal-header -->
 	      
