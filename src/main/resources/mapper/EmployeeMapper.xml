@@ -27,5 +27,9 @@
         	#{contract_year},#{contract_end_date},
         	#{department},#{job},#{on_job})
 	</select>
+	
+	<select id="findAll" resultType="cnmei.oa.pojo.Employee">
+		select * from t_employee where on_job = 1
+	</select>
 
 </mapper>

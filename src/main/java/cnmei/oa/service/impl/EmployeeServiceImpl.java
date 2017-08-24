@@ -2,6 +2,7 @@ package cnmei.oa.service.impl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		//设置在职状态
 		em.setOn_job(1);
 		employeeMapper.addEmployee(em);
+	}
+
+	@Override
+	public List<Employee> findAll() {
+		
+		return employeeMapper.findAll();
 	}
 
 }

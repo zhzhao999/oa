@@ -14,16 +14,16 @@
 							
 							<li><a id=""><span></span> 员工管理</a>
 								<ul class="list-group">
-									<li><a href="${ctx}/employee/findAll" class="list-group-item" id="member-register">员工查询</a></li>
-									<li><a href="${ctx}/employee/showAddEm" class="list-group-item" id="advertiser-import">员工录入</a></li>
-									<li><a href="${ctx}/employee/importEmployee" class="list-group-item" id="advertiser-import">员工信息导出</a></li>
+									<li><a href="${ctx}/employee/showList" class="list-group-item" id="employee-list">员工列表</a></li>
+									<li><a href="${ctx}/employee/showAddEm" class="list-group-item" id="employee-add">员工录入</a></li>
+									<li><a href="${ctx}/employee/importEmployee" class="list-group-item" id="employee-import">员工信息导出</a></li>
 								</ul>
 						   </li>
 							
 							<li><a id=""><span></span> 用户管理</a>
 								<ul class="list-group">
-									<li><a href="${ctx}/user/findAll" class="list-group-item" id="member-register">用户查询</a></li>
-									<li><a href="${ctx}/user/addUser" class="list-group-item" id="advertiser-import">用户添加</a></li>
+									<li><a href="${ctx}/user/findAll" class="list-group-item" id="user-list">用户列表</a></li>
+									<li><a href="${ctx}/user/addUser" class="list-group-item" id="user-add">用户添加</a></li>
 								</ul>
 						   </li>
 						   
