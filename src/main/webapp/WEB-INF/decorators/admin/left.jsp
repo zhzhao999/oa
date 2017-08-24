@@ -23,7 +23,7 @@
 							<li><a id=""><span></span> 用户管理</a>
 								<ul class="list-group">
 									<li><a href="${ctx}/user/findAll" class="list-group-item" id="user-list">用户列表</a></li>
-									<li><a href="${ctx}/user/addUser" class="list-group-item" id="user-add">用户添加</a></li>
+									<li><a href="${ctx}/addUser" class="list-group-item" id="user-add">用户添加</a></li>
 								</ul>
 						   </li>
 						   

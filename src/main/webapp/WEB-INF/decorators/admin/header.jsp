@@ -97,7 +97,7 @@
  		},
  		password : {
  			required : true,
- 			rangelength : [ 6, 20 ]
+ 			rangelength : [ 4, 20 ]
  		},
  		againPwd : {
  			required : true,
@@ -129,10 +129,12 @@
 		        if (json.code==1) {
 		        	layer.msg("修改密码成功");
 		        	setTimeout(function(){
-		        		window.location.href="showHomepage"
+		        		window.location.href="${ctx}/showHomepage"
 		        	}, 1000)
 		        } else {
-		            common.showMessage('修改密码失败！<br>原因：'+json.message, 'warn');
+		            layer.msg('修改密码失败', function(){
+		            	window.location.href="showHomepage"
+		          });
 		        } 
 		    });
 	    }
