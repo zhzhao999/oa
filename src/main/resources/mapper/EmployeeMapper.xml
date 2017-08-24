@@ -54,20 +54,19 @@
 		update t_employee set on_job = 0 where id = #{id}
 	</update>
 
-	<select id="findSearch" parameterType="HashMap" resultType="cnmei.oa.pojo.Employee">
+	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.pojo.Employee">
 		select * from t_employee
         <where>
-	       <choose>
-	       		<when test="name != null">
-	            	name like CONCAT('%',#{name},'%')
-	           	</when>
-	           	<when test="startTime != null">
-	            	stuAge> #{stuAge}
-	           	</when>
-			<otherwise>
-			    1=1
-			</otherwise>
-	       </choose>
+        	on_job = 1
+        	<if test="name != null and name != ''">
+                AND name like '%${name}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND entry_date &gt;= DATE_FORMAT('${startTime}', '%Y-%m-%d')
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND entry_date &lt;= DATE_FORMAT('${endTime}', '%Y-%m-%d')
+            </if>
         </where>
 	</select>
 </mapper>
