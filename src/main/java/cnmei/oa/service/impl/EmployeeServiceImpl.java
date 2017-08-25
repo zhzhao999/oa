@@ -1,10 +1,12 @@
 package cnmei.oa.service.impl;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,6 +93,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> findSearch(HashMap<String, Object> params) {
 		return employeeMapper.findSearch(params);
+	}
+
+	@Override
+	public List<Employee> findAllBySort(String sort) {
+		if (StringUtils.isNotBlank(sort)) {
+			String[] split = sort.split(",");
+			List<String> list = Arrays.asList(split);
+			if (list.contains("部门")) {
+				return employeeMapper.findAllBySort();
+			}
+		}
+		return employeeMapper.findAllByTime();
 	}
 
 }

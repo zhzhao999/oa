@@ -89,38 +89,12 @@ public class EmployeeController extends BaseController{
 		return "decorators/exportEm";
 	}
 	
-	/*@RequestMapping("/exportEm")
-	@ResponseBody
-	public ResultBean exportEm(String data,HttpServletRequest request,HttpServletResponse response){
-		ResultBean bean = new ResultBean();
-		if (data != null && data.length() > 0) {
-			String[] split = data.split(",");
-			List<String> list = Arrays.asList(split);
-			List<Employee> listE = employeeService.findAll();
-			try {
-				ExcelUtils.exportEm(listE, list,request,response);
-			} catch (IOException e) {
-				e.printStackTrace();
-				bean.setCode(0);
-				bean.setMessage(e.getLocalizedMessage());
-				return bean;
-			}
-			bean.setCode(1);
-			bean.setMessage("导出成功");
-			return bean;
-		}else{
-			bean.setCode(0);
-			bean.setMessage("请选择要导出的数据");
-			return bean;
-		}
-	}*/
-	
 	@RequestMapping("/exportEm")
-	public void exportEm(String eType,Model model,HttpServletRequest request,HttpServletResponse response){
+	public void exportEm(String eType,String eSort,Model model,HttpServletRequest request,HttpServletResponse response){
 		if (eType != null && eType.length() > 0) {
 			String[] split = eType.split(",");
 			List<String> list = Arrays.asList(split);
-			List<Employee> listE = employeeService.findAll();
+			List<Employee> listE = employeeService.findAllBySort(eSort);
 			try {
 				ExcelUtils.exportEm(listE, list,request, response);
 			} catch (IOException e) {

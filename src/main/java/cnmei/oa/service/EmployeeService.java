@@ -9,6 +9,7 @@ import cnmei.oa.pojo.Employee;
 public interface EmployeeService {
 	void addEmployee(Employee em);
 	List<Employee> findAll();
+	List<Employee> findAllBySort(String sort);
 	Employee findOnd(String id);
 	void updateEm(Employee em);
 	void deleteEm(String id);
