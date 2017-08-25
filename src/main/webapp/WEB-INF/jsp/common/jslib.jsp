@@ -11,3 +11,4 @@
 <script src="${ctx}/static/legacy/js/bootstrap-validation/validate.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/bootstrap-validation/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/bootstrap.js"></script>
+<script type="text/javascript" src="${ctx }/js/page.js"></script>

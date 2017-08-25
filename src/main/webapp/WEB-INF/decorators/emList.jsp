@@ -65,8 +65,22 @@
 		                </td>
 			        </tr>
 			        </c:forEach>
+			        
 			    </tbody>
 			</table>
+			<div class="row"><ul class="page" maxshowpageitem="5" pagelistcount="10"  id="page"></ul></div>
+			    <script type="text/javascript">
+				    function tt(dd){
+				        //alert(dd);
+				    }
+				    var GG = {
+				        "kk":function(mm){
+				            //alert(mm);
+				        }
+				    }
+				
+				    $("#page").initPage(100,1,GG.kk);
+				</script>
         </div>
 	</div>
 
