@@ -13,6 +13,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<plugin interceptor="com.github.pagehelper.PageHelper">
 			<property name="dialect" value="mysql" />
 		</plugin>
-	</plugins>
+	</plugins> 
 	
 </configuration>
