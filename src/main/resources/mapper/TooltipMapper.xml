@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cnmei.oa.mapper.TooltipMapper">
+	<resultMap id="BaseResultMap" type="cnmei.oa.pojo.Tooltip">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="employee_id" property="employee_id" jdbcType="INTEGER" />
+		<result column="message" property="message" jdbcType="VARCHAR" />
+		<result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="SearchRegularE" resultType="Integer" >
+		select count(1) from t_tooltip where status = 0;
+	</select>
+	
+	<select id="FindUnreadM" resultType="cnmei.oa.pojo.Tooltip" >
+		select * from t_tooltip where status = 0;
+	</select>
+	<select id="FindAllTool" resultType="cnmei.oa.pojo.Tooltip" >
+		SELECT * FROM t_tooltip WHERE STATUS = 1 ORDER BY create_time DESC
+	</select>
+	
+	<update id="updateStatus"  parameterType="Integer" >
+		update t_tooltip set status=1 where id=#{id};
+	</update>
+	
+	
+	<select id="insertEmployee"  parameterType="cnmei.oa.pojo.Tooltip">
+		insert into t_tooltip(employee_id,message,create_time) values(#{employee_id},#{message},#{create_time})
+	</select>
+	
+</mapper>

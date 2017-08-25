@@ -26,6 +26,12 @@
 									<li><a href="${ctx}/addUser" class="list-group-item" id="user-add">用户添加</a></li>
 								</ul>
 						   </li>
+						   <li><a id=""><span></span>提醒信息</a>
+								<ul class="list-group">
+									<li><a href="${ctx}/tooltip/findUnreadM" class="list-group-item" id="user-list">未查看提醒</a></li>
+									<li><a href="${ctx}/tooltip/findUnreadM?page=all" class="list-group-item" id="user-add">提醒记录</a></li>
+								</ul>
+						   </li>
 						   
 						</ul>
 					</div>
