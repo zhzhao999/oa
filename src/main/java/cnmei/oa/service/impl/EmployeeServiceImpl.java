@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.mapper.EmployeeMapper;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;
@@ -91,4 +92,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> findSearch(HashMap<String, Object> params) {
 		return employeeMapper.findSearch(params);
 	}
+
 }

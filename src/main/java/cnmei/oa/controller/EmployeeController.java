@@ -1,7 +1,12 @@
 package cnmei.oa.controller;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;
+import cnmei.oa.utils.ExcelUtils;
 
 @Controller
 @RequestMapping("/employee")
@@ -74,5 +82,57 @@ public class EmployeeController extends BaseController{
 	public String deleteEm(@PathVariable String id){
 		employeeService.deleteEm(id);
 		return "redirect:/employee/showList";
+	}
+	
+	@RequestMapping("/showExport")
+	public String showExport(){
+		return "decorators/exportEm";
+	}
+	
+	/*@RequestMapping("/exportEm")
+	@ResponseBody
+	public ResultBean exportEm(String data,HttpServletRequest request,HttpServletResponse response){
+		ResultBean bean = new ResultBean();
+		if (data != null && data.length() > 0) {
+			String[] split = data.split(",");
+			List<String> list = Arrays.asList(split);
+			List<Employee> listE = employeeService.findAll();
+			try {
+				ExcelUtils.exportEm(listE, list,request,response);
+			} catch (IOException e) {
+				e.printStackTrace();
+				bean.setCode(0);
+				bean.setMessage(e.getLocalizedMessage());
+				return bean;
+			}
+			bean.setCode(1);
+			bean.setMessage("导出成功");
+			return bean;
+		}else{
+			bean.setCode(0);
+			bean.setMessage("请选择要导出的数据");
+			return bean;
+		}
+	}*/
+	
+	@RequestMapping("/exportEm")
+	public void exportEm(String eType,Model model,HttpServletRequest request,HttpServletResponse response){
+		if (eType != null && eType.length() > 0) {
+			String[] split = eType.split(",");
+			List<String> list = Arrays.asList(split);
+			List<Employee> listE = employeeService.findAll();
+			try {
+				ExcelUtils.exportEm(listE, list,request, response);
+			} catch (IOException e) {
+				e.printStackTrace();
+				model.addAttribute("msg", "");
+				model.addAttribute("errorMsg", "数据导出异常");
+			}
+		}else{
+			model.addAttribute("msg", "");
+			model.addAttribute("errorMsg", "请先选择要导出的数据");
+		}
+		model.addAttribute("msg", "数据导出成功");
+		model.addAttribute("errorMsg", "");
 	}
 }

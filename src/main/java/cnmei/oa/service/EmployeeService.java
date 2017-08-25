@@ -3,6 +3,7 @@ package cnmei.oa.service;
 import java.util.HashMap;
 import java.util.List;
 
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.Employee;
 
 public interface EmployeeService {
