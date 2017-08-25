@@ -25,9 +25,9 @@
 					</script>
 					<span id="greeting"> &nbsp您好</span>
 					<div class="msginfo">
-						<a href="javascript:void(0)" id="msgtext">消息<span id="msgNum">0</span></a>
+						<a href="${ctx}/tooltip/findUnreadM" id="msgtext">消息<span id="msgNum">0</span></a>
 						<div class="msglist">
-							<a href="">消息</a>
+							<a href="${ctx}/tooltip/findUnreadM">消息</a>
 						</div>
 					</div>
 					<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button> -->
@@ -139,6 +139,12 @@
 		    });
 	    }
 	});
+ 
+ $(function(){
+	 $.post("${ctx}/tooltip/searchRegularE",{},function(data){
+		 $("#msgNum").text(data);
+	 },"json")
+ })
 </script>
   
 </script>

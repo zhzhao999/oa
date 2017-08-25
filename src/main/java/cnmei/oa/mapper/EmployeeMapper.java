@@ -12,4 +12,5 @@ public interface EmployeeMapper {
 	void updateById(Employee em);
 	void deleteEm(String id);
 	List<Employee> findSearch(HashMap<String, Object> params);
+	List<Integer> findRegular(String time);
 }

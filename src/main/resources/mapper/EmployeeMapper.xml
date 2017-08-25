@@ -69,4 +69,7 @@
             </if>
         </where>
 	</select>
+	<select id="findRegular" resultType="Integer" parameterType="String">
+		select id from t_employee where regular_date_date = DATE_FORMAT(#{time}, '%Y-%m-%d') and on_job = 1
+	</select>
 </mapper>

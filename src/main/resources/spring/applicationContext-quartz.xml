@@ -22,7 +22,7 @@
     <bean id="doJob"  
         class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
         <!-- 指定任务类 -->  
-        <property name="targetObject" ref="cleanDataServiceImpl" />  
+        <property name="targetObject" ref="quartzServiceImpl" />  
         <!-- 指定任务执行的方法 -->  
         <property name="targetMethod" value="execute" />  
     </bean>  
@@ -32,7 +32,7 @@
         class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
         <property name="jobDetail" ref="doJob" />  
         <!-- 每10秒运行一次 -->  
-        <property name="cronExpression" value="0/60 * * * * ?" /><!-- 每隔10秒钟触发一次 -->  
+        <property name="cronExpression" value="0 35 16 * * ?" /><!-- 每隔10秒钟触发一次 -->  
     </bean>  
   
     <!-- 触发定时任务 -->  
