@@ -5,6 +5,8 @@
 <html>
 <head>
     <title>员工管理</title>
+    <script src="${ctx }/static/legacy/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+	<link href="${ctx }/static/legacy/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="panel panel-default">                    
@@ -25,11 +27,11 @@
 			        <div class="form-group form-group-sm"> 
                         <label>入职时间</label>
                         <div class="input-group">
-                        <input type="text" class="form-control" name="startTime" value="${param.startTime }" 
-                            onfocus="WdatePicker({lang:'zh-cn'})">
+                        <input type="text" class="form-control Wdate" name="startTime" value="${param.startTime }" 
+                            onFocus="WdatePicker({lang:'zh-cn'})">
                         <div class="input-group-addon">至</div>
-                        <input type="text" class="form-control"  name="endTime" value="${param.endTime }" 
-                            onfocus="WdatePicker({lang:'zh-cn'})">
+                        <input type="text" class="form-control Wdate"  name="endTime" value="${param.endTime }" 
+                            onFocus="WdatePicker({lang:'zh-cn'})">
                         </div>
                     </div> 
 			        <div class="form-group">

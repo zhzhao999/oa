@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-	<link rel="stylesheet" href="static/legacy/css/bootstrap.css">
+	<link rel="stylesheet" href="${ctx }/static/legacy/css/bootstrap.css">
 <div class="row header" id= "headerss">
 	<div class="nav">
 		<div class="navbar-top">
