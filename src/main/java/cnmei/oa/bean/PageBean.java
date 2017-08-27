@@ -2,12 +2,12 @@ package cnmei.oa.bean;
 
 import java.util.List;
 
-public class PageBean {
+public class PageBean<T> {
 	private Integer currentPage;
 	private Integer pageSize;
 	private Integer totalPage;
 	private Integer count;
-	private List<?> rows;
+	private List<T> rows;
 	
 	public Integer getTotalPage() {
 		return totalPage;
@@ -36,7 +36,7 @@ public class PageBean {
 	public List<?> getRows() {
 		return rows;
 	}
-	public void setRows(List<?> rows) {
+	public void setRows(List<T> rows) {
 		this.rows = rows;
 	}
 }

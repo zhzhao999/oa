@@ -14,4 +14,5 @@ public interface EmployeeService {
 	void updateEm(Employee em);
 	void deleteEm(String id);
 	List<Employee> findSearch(HashMap<String, Object> params);
+	List<Employee> findAllByPage(String pageNum, String pageSize, String name, String startTime, String endTime);
 }

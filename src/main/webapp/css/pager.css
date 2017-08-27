@@ -1,0 +1,144 @@
+/**
+ *
+ * Created by lt on 2016/10/10.
+ *
+ */
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+.page_number{
+    height: 38px;
+}
+.page_number a.page_number_z{
+    width: 147px;
+}
+
+.page_number a.page_number_last {
+    width: 147px;
+}
+
+
+.page_number ul a:hover,
+.page_number a.on {
+    color: #262626;
+    background: #efeff3;
+}
+
+.page_number a.page_number_next:hover {
+    color: #efeff3;
+    background: none;
+}
+
+.page_number a.page_number_next {
+    width: 147px;
+}
+/**/
+.myPager {
+     display: none;
+     height: 38px;
+     line-height:38px;
+     text-align: center;
+     justify-content: center;
+     margin-top: -10px;
+     /* border-top: 1px solid #f1f1f1; */
+ }
+ .myPager ul {
+     text-align: center;
+     display: inline-block;
+ }
+ .myPager li {
+     float: left;
+     margin: 0 10px;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+     border-radius: 3px;
+ }
+
+ .myPager .prev {
+     width:147px;
+     border-right:1px solid #f1f1f1;
+ }
+    
+ .myPager .next {
+     width:147px;
+     border-left:1px solid #f1f1f1;
+
+ }
+ .myPager .count{
+ 	margin-right: 40px;
+ }
+  .myPager .count em{
+  	color: red;
+  	margin: 0 4px;
+  	font-style: normal;
+  }
+ /*可添加分页部分的数字边框*/  
+ .myPager ul a {
+     width: 20px;
+     height: 20px;
+     line-height: 20px;
+     display: inline-block;
+     color: #262626;
+     cursor: pointer;
+     text-align: center;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+     border-radius: 3px;
+ }
+ /*可添加分页部分的数字边框*/
+ .myPager>a{
+     width: 147px;
+     height: 20px;
+     line-height:20px;
+     margin-top:10px;
+     display: inline-block;
+     color: #262626;
+     cursor: pointer;
+     text-align: center;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+     border-radius: 3px;
+ }
+ .myPager .selected  a{
+     background: #efeff3;
+     -moz-border-radius: 3px;
+     -webkit-border-radius: 3px;
+     border-radius: 3px;
+ }
+
+.jump_box{
+    margin-right: 30px;
+}
+.jump_text input{
+    display: block;
+    width:28px;
+    height: 20px;
+    text-align: center;
+    border:1px solid #d9d9d9;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin:9px 5px 0;
+}
+.jump_text .jump{
+    line-height: 39px;
+    padding: 0 5px;
+    color: #868686;
+}
+.myPager .submit{
+    margin-top:9px;
+    margin-left:3px;
+    display: block;
+    width:40px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    border:1px solid #d9d9d9;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}

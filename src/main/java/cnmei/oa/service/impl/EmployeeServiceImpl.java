@@ -107,4 +107,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeMapper.findAllByTime();
 	}
 
+	@Override
+	public List<Employee> findAllByPage(String pageNum, String pageSize, String name, String startTime,
+			String endTime) {
+		
+		return null;
+	}
+
 }
