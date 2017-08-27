@@ -1,7 +1,6 @@
 package cnmei.oa.utils;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +8,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.T;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.util.CellRangeAddress;
 
 import cnmei.oa.pojo.Employee;
 
@@ -30,6 +25,7 @@ public class ExcelUtils {
 	 *            选择导出的数据类型
 	 * @throws IOException
 	 */
+	@SuppressWarnings("resource")
 	public static void exportEm(List<Employee> all, List<String> exp,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 创建HSSFWorkbook对象(excel的文档对象)
 		HSSFWorkbook wkb = new HSSFWorkbook();

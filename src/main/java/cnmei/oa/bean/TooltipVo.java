@@ -2,7 +2,6 @@ package cnmei.oa.bean;
 
 import java.util.Date;
 
-import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Tooltip;
 
 public class TooltipVo extends Tooltip{

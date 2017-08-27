@@ -10,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cnmei.oa.bean.ResultBean;
 import cnmei.oa.mapper.EmployeeMapper;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;

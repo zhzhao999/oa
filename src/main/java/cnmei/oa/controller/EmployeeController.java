@@ -1,7 +1,6 @@
 package cnmei.oa.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import cnmei.oa.bean.PageBean;
-import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;
 import cnmei.oa.utils.ExcelUtils;
