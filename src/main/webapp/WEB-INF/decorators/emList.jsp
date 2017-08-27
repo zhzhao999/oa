@@ -117,7 +117,7 @@
 	            	startTime: startTime,
 	            	endTime: endTime,
 	                pageNum: page,
-	                pageSize: 1
+	                pageSize: 10
 	            },
 	            success: function (data) {
 	            	//console.log(data);

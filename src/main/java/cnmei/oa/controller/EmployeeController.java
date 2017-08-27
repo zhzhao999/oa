@@ -69,10 +69,6 @@ public class EmployeeController extends BaseController{
         PageHelper.startPage(num, size);  
         List<Employee> searchList = employeeService.findSearch(params);
         PageInfo<Employee> pageInfo = new PageInfo<Employee>(searchList);  
-        System.out.println(pageInfo.getTotal());
-		System.out.println(pageInfo.getPages());
-		System.out.println(pageInfo.getPageNum());
-		System.out.println(pageInfo.getPageSize());
 		return pageInfo;
 	}
 	
