@@ -29,58 +29,58 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="name" />姓名
+				<input name="eType" type="checkbox" value="姓名" />姓名
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="gender" />性别
+				<input name="eType" type="checkbox" value="性别" />性别
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="birthday" />出生日期
+				<input name="eType" type="checkbox" value="出生日期" />出生日期
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="card_id" />身份证号
+				<input name="eType" type="checkbox" value="身份证号" />身份证号
 			</label>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="education" />学历
+				<input name="eType" type="checkbox" value="学历" />学历
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="school" />毕业院校
+				<input name="eType" type="checkbox" value="毕业院校" />毕业院校
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="major" />专业
+				<input name="eType" type="checkbox" value="专业" />专业
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="entry_date" />入职日期
+				<input name="eType" type="checkbox" value="入职日期" />入职日期
 			</label>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="department" />部门
+				<input name="eType" type="checkbox" value="部门" />部门
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="job" />职务
+				<input name="eType" type="checkbox" value="职务" />职务
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="level" />职级
+				<input name="eType" type="checkbox" value="职级" />职级
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="salary" />新资
+				<input name="eType" type="checkbox" value="新资" />新资
 			</label>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="telephone" />手机
+				<input name="eType" type="checkbox" value="手机" />手机
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="qq" />QQ
+				<input name="eType" type="checkbox" value="QQ" />QQ
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="email" />邮箱
+				<input name="eType" type="checkbox" value="邮箱" />邮箱
 			</label> 
 		</div>
 		<div class="form-group form-group-sm">
@@ -91,10 +91,10 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="department" />部门
+				<input name="eSort" type="checkbox" value="部门" />部门
 			</label> 
 			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="entry_date" />入职日期
+				<input name="eSort" type="checkbox" value="入职日期" />入职日期
 			</label> 
 		</div>
 	</div>

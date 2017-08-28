@@ -13,4 +13,6 @@ public interface EmployeeMapper {
 	void deleteEm(String id);
 	List<Employee> findSearch(HashMap<String, Object> params);
 	List<Integer> findRegular(String time);
+	List<Employee> findAllBySort();//按部门
+	List<Employee> findAllByTime();//按入职时间
 }

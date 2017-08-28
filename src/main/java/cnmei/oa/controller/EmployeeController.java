@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cnmei.oa.bean.ResultBean;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;
 import cnmei.oa.utils.ExcelUtils;
@@ -36,16 +38,42 @@ public class EmployeeController extends BaseController{
 	@RequestMapping(value="/saveEmployee")
 	public String saveEmployee(Employee em){
 		employeeService.addEmployee(em);
-		return "redirect:/employee/showList";
+		return "redirect:/employee/showListByPage";
 	}
 	
 	@RequestMapping(value="/showList")
 	public String showList(Model model){
-		List<Employee> emList = employeeService.findAll();
-		model.addAttribute("emList", emList);
+//		List<Employee> emList = employeeService.findAll();
+//		model.addAttribute("emList", emList);
 		return "decorators/emList";
 	}
-	@RequestMapping(value="/showSearchList")
+	
+	@RequestMapping(value={"/showListByPage"})
+	@ResponseBody
+	public PageInfo<Employee> showListByPage(Model model,String pageNum,String pageSize,String name,String startTime,String endTime){
+		HashMap<String,Object> params = new HashMap<String,Object>();
+		params.put("name", name);
+		params.put("startTime", startTime);
+		params.put("endTime", endTime);
+		
+		
+		int num = 1;  
+        int size = 10;  
+        if (pageNum != null && !"".equals(pageNum)) {  
+            num = Integer.parseInt(pageNum);  
+        }  
+        if (pageSize != null && !"".equals(pageSize)) {  
+            size = Integer.parseInt(pageSize);  
+        }  
+        // pageHelper分页查询对象  
+        PageHelper.startPage(num, size);  
+        List<Employee> searchList = employeeService.findSearch(params);
+        PageInfo<Employee> pageInfo = new PageInfo<Employee>(searchList);  
+		return pageInfo;
+	}
+	
+	
+	/*@RequestMapping(value="/showSearchList")
 	public String showSearchList(String name,String startTime, String endTime,Model model){
 		HashMap<String,Object> params = new HashMap<String,Object>();
 		params.put("name", name);
@@ -57,7 +85,7 @@ public class EmployeeController extends BaseController{
 		model.addAttribute("endTime", endTime);
 		model.addAttribute("emList", emList);
 		return "decorators/emList";
-	}
+	}*/
 	
 	@RequestMapping(value="/showDetail/{id}")
 	public String showDetail(Model model,@PathVariable String id){
@@ -89,38 +117,12 @@ public class EmployeeController extends BaseController{
 		return "decorators/exportEm";
 	}
 	
-	/*@RequestMapping("/exportEm")
-	@ResponseBody
-	public ResultBean exportEm(String data,HttpServletRequest request,HttpServletResponse response){
-		ResultBean bean = new ResultBean();
-		if (data != null && data.length() > 0) {
-			String[] split = data.split(",");
-			List<String> list = Arrays.asList(split);
-			List<Employee> listE = employeeService.findAll();
-			try {
-				ExcelUtils.exportEm(listE, list,request,response);
-			} catch (IOException e) {
-				e.printStackTrace();
-				bean.setCode(0);
-				bean.setMessage(e.getLocalizedMessage());
-				return bean;
-			}
-			bean.setCode(1);
-			bean.setMessage("导出成功");
-			return bean;
-		}else{
-			bean.setCode(0);
-			bean.setMessage("请选择要导出的数据");
-			return bean;
-		}
-	}*/
-	
 	@RequestMapping("/exportEm")
-	public void exportEm(String eType,Model model,HttpServletRequest request,HttpServletResponse response){
+	public void exportEm(String eType,String eSort,Model model,HttpServletRequest request,HttpServletResponse response){
 		if (eType != null && eType.length() > 0) {
 			String[] split = eType.split(",");
 			List<String> list = Arrays.asList(split);
-			List<Employee> listE = employeeService.findAll();
+			List<Employee> listE = employeeService.findAllBySort(eSort);
 			try {
 				ExcelUtils.exportEm(listE, list,request, response);
 			} catch (IOException e) {

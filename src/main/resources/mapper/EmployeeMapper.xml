@@ -72,4 +72,12 @@
 	<select id="findRegular" resultType="Integer" parameterType="String">
 		select id from t_employee where regular_date_date = DATE_FORMAT(#{time}, '%Y-%m-%d') and on_job = 1
 	</select>
+	
+	<select id="findAllBySort" resultType="cnmei.oa.pojo.Employee">
+		SELECT * FROM t_employee e WHERE e.`on_job` = 1 ORDER BY e.department, e.`entry_date` 
+	</select>
+	<select id="findAllByTime" resultType="cnmei.oa.pojo.Employee">
+		SELECT * FROM t_employee e WHERE e.`on_job` = 1 ORDER BY e.`entry_date` 
+	</select>
+	
 </mapper>
