@@ -15,4 +15,5 @@ public interface EmployeeMapper {
 	List<Integer> findRegular(String time);
 	List<Employee> findAllBySort();//按部门
 	List<Employee> findAllByTime();//按入职时间
+	Integer findDateCount(String time); //获取当日入职的人数
 }

@@ -38,7 +38,7 @@ public class EmployeeController extends BaseController{
 	@RequestMapping(value="/saveEmployee")
 	public String saveEmployee(Employee em){
 		employeeService.addEmployee(em);
-		return "redirect:/employee/showListByPage";
+		return "decorators/emList";
 	}
 	
 	@RequestMapping(value="/showList")
