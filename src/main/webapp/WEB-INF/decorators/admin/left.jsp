@@ -45,5 +45,7 @@ $(function() {
 			$('.leftmenu > ul.leftmenu-list > li:first a').click();
 		}
 	}, 500);
+	
+	
 })
 </script>
