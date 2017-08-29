@@ -29,8 +29,8 @@
 						   </c:if>
 						   <li><a id=""><span></span>提醒信息</a>
 								<ul class="list-group">
-									<li><a href="${ctx}/tooltip/findUnreadM" class="list-group-item" id="user-list">未查看提醒</a></li>
-									<li><a href="${ctx}/tooltip/findUnreadM?page=all" class="list-group-item" id="user-add">提醒记录</a></li>
+									<li><a href="${ctx}/tooltip/findUnreadM" class="list-group-item" id="tooltip-list">未查看提醒</a></li>
+									<li><a href="${ctx}/tooltip/findUnreadM?page=all" class="list-group-item" id="tooltip-add">提醒记录</a></li>
 								</ul>
 						   </li>
 						   

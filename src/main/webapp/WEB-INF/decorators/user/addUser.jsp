@@ -40,6 +40,7 @@
 	</div>
 	
 	<script type="text/javascript">
+	menu.active('#user-add');
 	var validator1 = $('#inputForm').validate({
 	 	rules : {
 	 		yhName: {

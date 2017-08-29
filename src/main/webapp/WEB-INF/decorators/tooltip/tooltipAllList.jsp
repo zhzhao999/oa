@@ -69,7 +69,7 @@
 				          	})
 				          </script>
 <script type="text/javascript">
-menu.active('#user-add');
+menu.active('#tooltip-add');
 $(function() {
 	var a ='${toolList}';
 	var b = a[1];

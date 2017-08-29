@@ -67,6 +67,7 @@
 				          	})
 				          </script>
 <script type="text/javascript">
+menu.active('#tooltip-list');
 $(function() {
 	var a ='${toolList}';
 	var b = a[1];

@@ -65,6 +65,7 @@
 				          	})
 				          </script>
 <script type="text/javascript">
+menu.active('#user-list');
 $(function() {
     menu.active('#package-manage');
 });

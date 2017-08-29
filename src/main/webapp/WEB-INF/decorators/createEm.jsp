@@ -140,11 +140,7 @@
 </form>
 
 <script type="text/javascript">
-<<<<<<< HEAD
-
-	menu.active('#employee-add');
-=======
->>>>>>> branch 'master' of git@github.com:zhzhao999/oa.git
+menu.active('#employee-add');
 $(function() {
 	$('#inputForm').validate({
 		rules: {
