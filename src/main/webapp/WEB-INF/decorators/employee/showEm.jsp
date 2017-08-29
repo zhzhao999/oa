@@ -152,3 +152,7 @@
 		</p>
 	</div>
 </form>
+
+<script type="text/javascript">
+menu.active('#employee-export');
+</script>

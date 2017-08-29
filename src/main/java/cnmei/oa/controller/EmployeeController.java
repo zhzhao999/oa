@@ -32,20 +32,20 @@ public class EmployeeController extends BaseController{
 	
 	@RequestMapping("/showAddEm")
 	public String showAddEm(){
-		return "decorators/createEm";
+		return "decorators/employee/createEm";
 	}
 	
 	@RequestMapping(value="/saveEmployee")
 	public String saveEmployee(Employee em){
 		employeeService.addEmployee(em);
-		return "decorators/emList";
+		return "decorators/employee/emList";
 	}
 	
 	@RequestMapping(value="/showList")
 	public String showList(Model model){
 //		List<Employee> emList = employeeService.findAll();
 //		model.addAttribute("emList", emList);
-		return "decorators/emList";
+		return "decorators/employee/emList";
 	}
 	
 	@RequestMapping(value={"/showListByPage"})
@@ -91,13 +91,13 @@ public class EmployeeController extends BaseController{
 	public String showDetail(Model model,@PathVariable String id){
 		Employee em = employeeService.findOnd(id);
 		model.addAttribute("em", em);
-		return "decorators/showEm";
+		return "decorators/employee/showEm";
 	}
 	@RequestMapping(value="/showUpdate/{id}")
 	public String showUpdate(Model model,@PathVariable String id){
 		Employee em = employeeService.findOnd(id);
 		model.addAttribute("em", em);
-		return "decorators/updateEm";
+		return "decorators/employee/updateEm";
 	}
 	
 	@RequestMapping(value="/updateEm",method=RequestMethod.POST)
@@ -114,7 +114,7 @@ public class EmployeeController extends BaseController{
 	
 	@RequestMapping("/showExport")
 	public String showExport(){
-		return "decorators/exportEm";
+		return "decorators/employee/exportEm";
 	}
 	
 	@RequestMapping("/exportEm")
