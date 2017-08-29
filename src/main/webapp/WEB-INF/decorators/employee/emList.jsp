@@ -91,6 +91,7 @@
         </div>
 	</div>
 <script type="text/javascript">
+menu.active('#employee-list');
 	$(function(){
 		//查询
 		var name = '';

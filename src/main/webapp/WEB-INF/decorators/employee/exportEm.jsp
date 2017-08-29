@@ -107,6 +107,7 @@
 </form>
 
 <script type="text/javascript">
+menu.active('#employee-export');
 /* $("#agent-submit").click(function(){
 	var data_ = [];
 	$("input[type=checkbox]:checked").each(function(){
