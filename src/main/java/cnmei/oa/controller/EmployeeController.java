@@ -20,7 +20,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import cnmei.oa.pojo.Employee;
+import cnmei.oa.pojo.Log;
 import cnmei.oa.service.EmployeeService;
+import cnmei.oa.service.LogService;
 import cnmei.oa.utils.ExcelUtils;
 
 @Controller
@@ -29,6 +31,8 @@ public class EmployeeController extends BaseController{
 	
 	@Autowired
 	private EmployeeService employeeService;
+	@Autowired 
+	private LogService logService;
 	
 	@RequestMapping("/showAddEm")
 	public String showAddEm(){
@@ -36,8 +40,16 @@ public class EmployeeController extends BaseController{
 	}
 	
 	@RequestMapping(value="/saveEmployee")
-	public String saveEmployee(Employee em){
+	public String saveEmployee(Employee em,HttpServletRequest request){
+		//添加员工
 		employeeService.addEmployee(em);
+		//写日志
+		Log log = new Log();
+		log.setUser_name(getCurrentUser(request).getName());
+		log.setOpe_module("员工模块");
+		log.setOpe_context("增加员工,员工编号："+em.getEe_id());
+		logService.addLog(log);
+		//返回信息
 		return "decorators/employee/emList";
 	}
 	
@@ -72,21 +84,6 @@ public class EmployeeController extends BaseController{
 		return pageInfo;
 	}
 	
-	
-	/*@RequestMapping(value="/showSearchList")
-	public String showSearchList(String name,String startTime, String endTime,Model model){
-		HashMap<String,Object> params = new HashMap<String,Object>();
-		params.put("name", name);
-		params.put("startTime", startTime);
-		params.put("endTime", endTime);
-		List<Employee> emList = employeeService.findSearch(params);
-		model.addAttribute("name", name);
-		model.addAttribute("startTime", startTime);
-		model.addAttribute("endTime", endTime);
-		model.addAttribute("emList", emList);
-		return "decorators/emList";
-	}*/
-	
 	@RequestMapping(value="/showDetail/{id}")
 	public String showDetail(Model model,@PathVariable String id){
 		Employee em = employeeService.findOnd(id);
@@ -101,14 +98,26 @@ public class EmployeeController extends BaseController{
 	}
 	
 	@RequestMapping(value="/updateEm",method=RequestMethod.POST)
-	public String updateEm(Employee em){
+	public String updateEm(Employee em,HttpServletRequest request){
 		employeeService.updateEm(em);
+		//写日志
+		Log log = new Log();
+		log.setUser_name(getCurrentUser(request).getName());
+		log.setOpe_module("员工模块");
+		log.setOpe_context("修改员工,员工编号："+em.getEe_id());
+		logService.addLog(log);
 		return "redirect:/employee/showList";
 	}
 	
 	@RequestMapping(value="/deleteEm/{id}")
-	public String deleteEm(@PathVariable String id){
+	public String deleteEm(@PathVariable String id,HttpServletRequest request){
 		employeeService.deleteEm(id);
+		//写日志
+		Log log = new Log();
+		log.setUser_name(getCurrentUser(request).getName());
+		log.setOpe_module("员工模块");
+		log.setOpe_context("删除员工,员工ID："+id);
+		logService.addLog(log);
 		return "redirect:/employee/showList";
 	}
 	
