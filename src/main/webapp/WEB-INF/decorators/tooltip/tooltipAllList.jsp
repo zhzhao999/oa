@@ -323,12 +323,10 @@ $('#user-form-save').click(function() {
 			  ,yes: function(index){
 			    layer.close(index);
 			    $.post("${ctx}/tooltip/modificationStatus",{"id":id,"fin_status":fin_status},function(data){
-			    	if(data.code){
-			    		 layer.msg(data.message);
-			    		 setTimeout(function(){
-				    		 location.reload();
-			    		 }, 1000)
-			    	}
+		    		 layer.msg(data.message);
+		    		 setTimeout(function(){
+			    		 location.reload();
+		    		 }, 1000)
 			    },"json")
 			  }
 			});
