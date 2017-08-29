@@ -19,13 +19,14 @@
 									<li><a href="${ctx}/employee/showExport" class="list-group-item" id="employee-export">员工信息导出</a></li>
 								</ul>
 						   </li>
-							
-							<li><a id=""><span></span> 用户管理</a>
-								<ul class="list-group">
-									<li><a href="${ctx}/user/findAll" class="list-group-item" id="user-list">用户列表</a></li>
-									<li><a href="${ctx}/addUser" class="list-group-item" id="user-add">用户添加</a></li>
-								</ul>
-						   </li>
+							<c:if test="${userName eq 'admin' }">
+								<li><a id=""><span></span> 用户管理</a>
+									<ul class="list-group">
+										<li><a href="${ctx}/user/findAll" class="list-group-item" id="user-list">用户列表</a></li>
+										<li><a href="${ctx}/addUser" class="list-group-item" id="user-add">用户添加</a></li>
+									</ul>
+							   </li>
+						   </c:if>
 						   <li><a id=""><span></span>提醒信息</a>
 								<ul class="list-group">
 									<li><a href="${ctx}/tooltip/findUnreadM" class="list-group-item" id="user-list">未查看提醒</a></li>
@@ -45,5 +46,7 @@ $(function() {
 			$('.leftmenu > ul.leftmenu-list > li:first a').click();
 		}
 	}, 500);
+	
+	
 })
 </script>

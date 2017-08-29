@@ -19,7 +19,7 @@
             	<div class="col-md-10 mt10 text-left">
 				<form class="form-inline" >
 					<div class="form-group">
-				          <input type="text" class="form-control input-sm" id = "searchName"  name="search_LIKE_name" placeholder="按名称查询" value=""/>
+				          <input type="text" class="form-control input-sm" id = "searchName"  name="search_LIKE_name" placeholder="按名称查询" value="${param.name }"/>
 				          
 			        </div>
 			        <div class="form-group">

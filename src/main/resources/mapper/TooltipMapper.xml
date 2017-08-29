@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="FindUnreadM" resultType="cnmei.oa.pojo.Tooltip" >
-		select * from t_tooltip where status = 0;
+		SELECT * FROM t_tooltip WHERE STATUS = 0
 	</select>
 	<select id="FindAllTool" resultType="cnmei.oa.pojo.Tooltip" >
 		SELECT * FROM t_tooltip WHERE STATUS = 1 ORDER BY create_time DESC

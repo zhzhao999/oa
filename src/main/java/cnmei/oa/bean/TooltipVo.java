@@ -4,8 +4,15 @@ import java.util.Date;
 
 import cnmei.oa.pojo.Tooltip;
 
-public class TooltipVo extends Tooltip{
+public class TooltipVo {
 	/*private Employee employee;*/
+	
+
+	private Integer id;
+	private Integer employee_id;
+	private String message;
+	private boolean status;
+	private Date create_time;
 	private String employeeName;
 	private String department;
 	private String job;
@@ -34,14 +41,34 @@ public class TooltipVo extends Tooltip{
 	public void setEntry_date(Date entry_date) {
 		this.entry_date = entry_date;
 	}
-
-	/*public Employee getEmployee() {
-		return employee;
+	public Integer getId() {
+		return id;
 	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}*/
-	
-	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getEmployee_id() {
+		return employee_id;
+	}
+	public void setEmployee_id(Integer employee_id) {
+		this.employee_id = employee_id;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public Date getCreate_time() {
+		return create_time;
+	}
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
 }
