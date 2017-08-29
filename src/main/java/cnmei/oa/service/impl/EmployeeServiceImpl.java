@@ -30,11 +30,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 			String zodiac = ZodiacUtils.getZodiac(birthday);
 			em.setZodiac(zodiac);
 		}
-		//根据入职日期 试用期 合同年限 计算 转正日期及合同终止日期
+		//根据入职日期 试用期 合同年限 计算 转正日期及合同终止日期  员工编号
 		Date eDate = em.getEntry_date();//入职日期
 		int pro = em.getProbation();//试用期时长
 		int conYear = em.getContract_year();//合同年限
 		if (eDate != null) {
+			//生成员工编号
+			String eDateStr = DateUtils.dateToString(eDate,"yyyyMMdd");
+			Integer num = employeeMapper.findDateCount(eDateStr);//查询到当天入职的 员工人数
+			if (num == 0) {
+				em.setEe_id(eDateStr + "00");
+			}else{
+				if (num < 10) {
+					em.setEe_id(eDateStr + "0" + num);
+				}else if(10 <= num && num <= 99){
+					em.setEe_id(eDateStr + num);
+				}else{
+					throw new RuntimeException(eDateStr +"的入职人数已有99人，请换个日期再试");
+				}
+			}
+			
 			if (pro != 0) {
 				Date regDate = DateUtils.getParseDate(eDate, Calendar.MONTH, pro);
 				em.setRegular_date(regDate);
@@ -72,6 +87,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 		int pro = em.getProbation();//试用期时长
 		int conYear = em.getContract_year();//合同年限
 		if (eDate != null) {
+			//生成员工编号
+			String eDateStr = DateUtils.dateToString(eDate,"yyyyMMdd");
+			Integer num = employeeMapper.findDateCount(eDateStr);//查询到当天入职的 员工人数
+			if (num == 0) {
+				em.setEe_id(eDateStr + "00");
+			}else{
+				if (num < 10) {
+					em.setEe_id(eDateStr + "0" + num);
+				}else if(10 <= num && num <= 99){
+					em.setEe_id(eDateStr + num);
+				}else{
+					throw new RuntimeException(eDateStr +"的入职人数已有99人，请换个日期再试");
+				}
+			}
+			
 			if (pro != 0) {
 				Date regDate = DateUtils.getParseDate(eDate, Calendar.MONTH, pro);
 				em.setRegular_date(regDate);
@@ -104,13 +134,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 			}
 		}
 		return employeeMapper.findAllByTime();
-	}
-
-	@Override
-	public List<Employee> findAllByPage(String pageNum, String pageSize, String name, String startTime,
-			String endTime) {
-		
-		return null;
 	}
 
 }

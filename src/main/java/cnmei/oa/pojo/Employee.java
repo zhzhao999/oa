@@ -7,6 +7,7 @@ public class Employee implements Serializable{
 	private static final long serialVersionUID = 3453109906124806310L;
 	
 	private int id;
+	private String ee_id; //员工编号
 	private String name;
 	private String gender;
 	private String nation;
@@ -174,6 +175,12 @@ public class Employee implements Serializable{
 	}
 	public void setJob(String job) {
 		this.job = job;
+	}
+	public String getEe_id() {
+		return ee_id;
+	}
+	public void setEe_id(String ee_id) {
+		this.ee_id = ee_id;
 	}
 	
 }

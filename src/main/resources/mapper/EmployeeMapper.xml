@@ -9,7 +9,7 @@
 
 	<insert id="addEmployee" parameterType="cnmei.oa.pojo.Employee">
 		insert into t_employee
-			(name,gender,nation,
+			(ee_id,name,gender,nation,
 			birthday,zodiac,card_id,
 			telephone,qq,email,
 			education,school,major,
@@ -18,7 +18,7 @@
 			contract_year,contract_end_date,
 			department,job,on_job)
         values 
-        	(#{name},#{gender},#{nation},
+        	(#{ee_id},#{name},#{gender},#{nation},
         	#{birthday},#{zodiac},#{card_id},
         	#{telephone},#{qq},#{email},
         	#{education},#{school},#{major},
@@ -39,7 +39,7 @@
 	
 	<update id="updateById" parameterType="cnmei.oa.pojo.Employee">
 		update t_employee set 
-			name = #{name}, gender = #{gender},nation = #{nation},
+			ee_id = #{ee_id},name = #{name}, gender = #{gender},nation = #{nation},
 			birthday = #{birthday}, zodiac = #{zodiac},card_id = #{card_id},
         	telephone = #{telephone}, qq = #{qq},email = #{email},
         	education = #{education}, school = #{school}, major = #{major},
@@ -71,6 +71,9 @@
 	</select>
 	<select id="findRegular" resultType="Integer" parameterType="String">
 		select id from t_employee where regular_date_date = DATE_FORMAT(#{time}, '%Y-%m-%d') and on_job = 1
+	</select>
+	<select id="findDateCount" resultType="Integer" parameterType="String">
+		SELECT COUNT(id) FROM t_employee WHERE  entry_date =  DATE_FORMAT(#{time}, '%Y-%m-%d')
 	</select>
 	
 	<select id="findAllBySort" resultType="cnmei.oa.pojo.Employee">

@@ -48,9 +48,11 @@
             <table class="table table-bordered table-condensed table-hover" style="table-layout:fixed;word-wrap:break-word;word-break:break-all">
 			<thead>
 			        <tr class="thead">
-		                <th>名称</th>
-			            <th>学校</th>
-			            <th>日期</th>
+		                <th>员工编号</th>
+		                <th>姓名</th>
+			            <th>部门</th>
+			            <th>职位</th>
+			            <th>入职日期</th>
 		                <th>操作</th>
 			        </tr>
 			    </thead>
@@ -143,9 +145,11 @@
 	        var html = '';
 	        for (var i = 0, len = data.length; i < len; i++) {
 	            html += '<tr>' +
+	            	'<td>' + data[i].ee_id + '</td>' +
 	            	'<td>' + data[i].name + '</td>' +
-	            	'<td>' + data[i].school + '</td>' +
-	            	'<td>' + formatDate(data[i].birthday) + '</td>' +
+	            	'<td>' + data[i].department + '</td>' +
+	            	'<td>' + data[i].job + '</td>' +
+	            	'<td>' + formatDate(data[i].entry_date) + '</td>' +
 	            	'<td>' +
 	            		'<div class="btn-group" role="group" aria-label="...">' +
 	            			'<a id="look" href="${ctx }/employee/showDetail/' + data[i].id + '" class="btn btn-default btn-sm">查看</a>' +
