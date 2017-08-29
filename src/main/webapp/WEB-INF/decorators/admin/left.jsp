@@ -33,6 +33,12 @@
 									<li><a href="${ctx}/tooltip/findUnreadM?page=all" class="list-group-item" id="tooltip-add">提醒记录</a></li>
 								</ul>
 						   </li>
+						   <li><a id=""><span></span>系统管理</a>
+								<ul class="list-group">
+									<li><a href="${ctx}/dict/show" class="list-group-item" id="dict-list">字典管理</a></li>
+									<li><a href="${ctx}/log/showList" class="list-group-item" id="use-log">操作日志</a></li>
+								</ul>
+						   </li>
 						   
 						</ul>
 					</div>

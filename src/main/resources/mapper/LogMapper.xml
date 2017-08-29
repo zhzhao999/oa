@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cnmei.oa.mapper.LogMapper">
+	<insert id="addLog" parameterType="cnmei.oa.pojo.Log">
+		INSERT INTO t_use_log 
+			(user_name,ope_date,ope_module,ope_context) 
+		VALUES
+			(#{user_name},NOW(),#{ope_module},#{ope_context})
+	</insert>
+	
+	<select id="findAll" parameterType="java.util.HashMap" resultType="cnmei.oa.pojo.Log">
+		select * from t_use_log
+        <where>
+        	<if test="name != null and name != ''">
+                AND user_name like '%${name}%'
+            </if>
+        	<if test="module != null and module != ''">
+                AND ope_module like '%${module}%'
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND ope_date &gt;= DATE_FORMAT('${startTime}', '%Y-%m-%d')
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND ope_date &lt;= DATE_FORMAT('${endTime}', '%Y-%m-%d')
+            </if>
+        </where>
+	</select>
+	
+</mapper>
