@@ -14,4 +14,6 @@ public interface TooltipMapper {
 	List<Tooltip> FindAllTool();
 
 	void updateStatus(Integer id);
+
+	void updateFinStatus(Tooltip tooltip);
 }

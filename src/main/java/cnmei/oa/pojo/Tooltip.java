@@ -9,7 +9,17 @@ public class Tooltip {
 	private String message;
 	private boolean status;
 	private Date create_time;
+	
+	private boolean fin_status;
 
+
+	public boolean isFin_status() {
+		return fin_status;
+	}
+
+	public void setFin_status(boolean fin_status) {
+		this.fin_status = fin_status;
+	}
 
 	public Integer getEmployee_id() {
 		return employee_id;

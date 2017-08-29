@@ -24,6 +24,10 @@
 		update t_tooltip set status=1 where id=#{id};
 	</update>
 	
+	<update id="updateFinStatus"  parameterType="cnmei.oa.pojo.Tooltip">
+		update t_tooltip set fin_status=#{fin_status} where id=#{id};
+	</update>
+	
 	
 	<select id="insertEmployee"  parameterType="cnmei.oa.pojo.Tooltip">
 		insert into t_tooltip(employee_id,message,create_time) values(#{employee_id},#{message},#{create_time})

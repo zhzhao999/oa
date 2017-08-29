@@ -6,8 +6,8 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.bean.TooltipVo;
 import cnmei.oa.mapper.EmployeeMapper;
 import cnmei.oa.mapper.TooltipMapper;
@@ -47,6 +47,7 @@ public class tooltipServiceImpl implements TooltipService{
 			tooltipVo.setId(toolList.get(i).getId());
 			tooltipVo.setEmployee_id(toolList.get(i).getEmployee_id());
 			tooltipVo.setCreate_time(toolList.get(i).getCreate_time());
+			tooltipVo.setFin_status(toolList.get(i).isFin_status());
 			tooltipVo.setMessage(toolList.get(i).getMessage());
 			tooltipVo.setDepartment(employee.getDepartment());
 			tooltipVo.setEntry_date(employee.getEntry_date());
@@ -58,5 +59,23 @@ public class tooltipServiceImpl implements TooltipService{
 			tooltipMapper.updateStatus(toolList.get(i).getId());
 		}
 		return tooltipVoList;
+	}
+
+	@Override
+	public ResultBean updateFinStatus(Integer id, boolean b) {
+		ResultBean resultBean = new ResultBean();
+		Tooltip tooltip = new Tooltip();
+		tooltip.setId(id);
+		tooltip.setFin_status(b);
+		try {
+			tooltipMapper.updateFinStatus(tooltip);
+			resultBean.setCode(1);
+			resultBean.setMessage("状态修改成功");
+		} catch (Exception e) {
+			resultBean.setCode(1);
+			resultBean.setMessage("状态修改失败！！！");
+			new Exception("修改状态失败");
+		}
+		return resultBean;
 	}
 }

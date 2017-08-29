@@ -30,6 +30,7 @@
 			            <th>职务</th>
 			            <th>入职时间</th>
 		                <th>提醒信息</th>
+		                <th>是否完成</th>
 			        </tr>
 			    </thead>
 			    <tbody id="contList">
@@ -257,6 +258,7 @@ $('#user-form-save').click(function() {
 	        var data = list;
 	        var html = '';
 	        for (var i = 0, len = data.length; i < len; i++) {
+	        	if(data[i].fin_status){
 	            html += '<tr>' +
 	           		'<td>' + formatDate(data[i].create_time) + '</td>' +
 	            	'<td>' + data[i].employeeName + '</td>' +
@@ -264,10 +266,31 @@ $('#user-form-save').click(function() {
 	            	'<td>' + data[i].job + '</td>' +
 	            	'<td>' + formatDate(data[i].entry_date) + '</td>' +
 	            	'<td>' + data[i].message + '</td>' +
+	            	'<td>' +
+            		'<div class="btn-group" role="group" aria-label="...">' +
+            			'<a id="look" href="javascript://" onclick="modificationStatus('+data[i].id+","+data[i].fin_status+')" class="btn btn-default btn-sm active">已完成</a>' +
+            		'</td>'
 	            	'</tr>';
+	        	}else{
+	        		 html += '<tr>' +
+		           		'<td>' + formatDate(data[i].create_time) + '</td>' +
+		            	'<td>' + data[i].employeeName + '</td>' +
+		            	'<td>' + data[i].department + '</td>' +
+		            	'<td>' + data[i].job + '</td>' +
+		            	'<td>' + formatDate(data[i].entry_date) + '</td>' +
+		            	'<td>' + data[i].message + '</td>' +
+		            	'<td>' +
+	            		'<div class="btn-group" role="group" aria-label="...">' +
+	            			'<a id="look" href="javascript://" onclick="modificationStatus('+data[i].id+","+data[i].fin_status+')" class="btn btn-default btn-sm ">未完成</a>' +
+	            		'</td>'
+		            	'</tr>';
+	        	}
+	        	
 	        }
 	        return html;
 	    }
+		
+		
 	    
 		// 监听页面切换
 	    myPager.on('page', function (data) {
@@ -292,6 +315,24 @@ $('#user-form-save').click(function() {
 		    return [year,month,date].join('');
 		}
 	});
+	
+	function modificationStatus(id,fin_status){
+		layer.msg('确定修改状态么？', {
+			  time: 0 //不自动关闭
+			  ,btn: ['确定', '关闭']
+			  ,yes: function(index){
+			    layer.close(index);
+			    $.post("${ctx}/tooltip/modificationStatus",{"id":id,"fin_status":fin_status},function(data){
+			    	if(data.code){
+			    		 layer.msg(data.message);
+			    		 setTimeout(function(){
+				    		 location.reload();
+			    		 }, 1000)
+			    	}
+			    },"json")
+			  }
+			});
+	}
 </script>
 </body>
 </html>

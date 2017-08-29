@@ -1,6 +1,5 @@
 package cnmei.oa.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.bean.TooltipVo;
-import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Tooltip;
 import cnmei.oa.service.TooltipService;
 
@@ -67,5 +65,12 @@ public class TooltipController extends BaseController{
         List<TooltipVo> findToolTipVo = tooltipService.findToolTipVo(toolList);
         pageInfo.setList(findToolTipVo);
 		return pageInfo;
+	}
+	
+	@RequestMapping(value={"/modificationStatus"})
+	@ResponseBody
+	public ResultBean modificationStatus(Integer id,boolean fin_status){
+		ResultBean resultBean  = tooltipService.updateFinStatus(id,!fin_status);
+		return resultBean;
 	}
 }
