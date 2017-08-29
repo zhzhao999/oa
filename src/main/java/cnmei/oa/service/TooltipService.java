@@ -3,11 +3,14 @@ package cnmei.oa.service;
 import java.util.List;
 
 import cnmei.oa.bean.TooltipVo;
+import cnmei.oa.pojo.Tooltip;
 
 public interface TooltipService {
 	
 	Integer SearchRegularE();
 
-	List<TooltipVo> FindUnreadM(String page);
+	List<Tooltip> FindUnreadM(String page);
+	
+	List<TooltipVo> findToolTipVo(List<Tooltip> toolList);
 
 }

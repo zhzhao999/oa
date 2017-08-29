@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import cnmei.oa.bean.TooltipVo;
 import cnmei.oa.mapper.EmployeeMapper;
@@ -29,14 +30,16 @@ public class tooltipServiceImpl implements TooltipService{
 		return tooltipMapper.SearchRegularE();
 	}
 
-	@Override
-	public List<TooltipVo> FindUnreadM(String page) {
+	public List<Tooltip> FindUnreadM(String page) {
 		List<Tooltip> toolList = null;
 		if(StringUtils.isNotBlank(page)){
 			toolList = tooltipMapper.FindAllTool();
 		}else{
 			toolList = tooltipMapper.FindUnreadM();
 		}
+		return toolList;
+	}
+	public List<TooltipVo> findToolTipVo(List<Tooltip> toolList){
 		List<TooltipVo> tooltipVoList = new ArrayList<TooltipVo>();
 		for (int i = 0; i < toolList.size(); i++) {
 			Employee employee = EmployeeMapper.findOne(String.valueOf(toolList.get(i).getEmployee_id()));

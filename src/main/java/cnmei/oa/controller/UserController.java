@@ -67,7 +67,13 @@ public class UserController extends BaseController {
 	
 	@RequestMapping("/user/addUser")
 	@ResponseBody
-	public ResultBean addUser(String yhName,String userPassword){
+	public ResultBean addUser(HttpServletRequest request,String yhName,String userPassword){
+		if(!getUser(request)){
+			ResultBean resultBean = new ResultBean();
+			resultBean.setCode(0);
+			resultBean.setMessage("您不是超级管理员,没有权限添加用户！！！");
+			return resultBean;
+		}
 		User user = new User();
 		user.setName(yhName);
 		user.setPassword(MD5Utils.md5(userPassword));
@@ -78,7 +84,13 @@ public class UserController extends BaseController {
 	
 	@RequestMapping("/user/deleteUser")
 	@ResponseBody
-	public ResultBean deleteUser(Integer id){
+	public ResultBean deleteUser(Integer id,HttpServletRequest request){
+		if(!getUser(request)){
+			ResultBean resultBean = new ResultBean();
+			resultBean.setCode(0);
+			resultBean.setMessage("您不是超级管理员,没有权限删除用户！！！");
+			return resultBean;
+		}
 		ResultBean resultBean = userService.deleteUser(id);
 		return resultBean;
 	}
@@ -91,4 +103,11 @@ public class UserController extends BaseController {
 		return modelAndView;
 	}
 	
+	public boolean getUser(HttpServletRequest request){
+		String userName = (String) request.getSession().getAttribute("userName");
+		if(userName.equals("admin")){
+			return true;
+		}
+		return false;
+	}
 }

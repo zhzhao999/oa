@@ -4,6 +4,10 @@
 <html>
 <head>
     <title>用户管理</title>
+     <link href="${ctx }/static/legacy/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+	<link href="${ctx }/css/pager.css" rel="stylesheet" type="text/css">
+    <script src="${ctx }/static/legacy/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="${ctx }/js/page.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="panel panel-default">                    
@@ -27,8 +31,8 @@
 		                <th>提醒信息</th>
 			        </tr>
 			    </thead>
-			    <tbody>
-			        <c:forEach items="${toolList}" var="em">
+			    <tbody id="contList"> 
+			        <%-- <c:forEach items="${toolList}" var="em">
 			        <tr>
 			            <td>${em.employeeName }</td>
 			            <td>${em.department}</td>
@@ -36,9 +40,23 @@
 			           	<td><fmt:formatDate value="${em.entry_date }" pattern="yyyy-MM-dd"/></td>
 			           	<td>${em.message}</td>
 			        </tr>
-			        </c:forEach>
+			        </c:forEach> --%>
 			    </tbody>
 			</table>
+			<div class="page_number clearfix myPager" id="myPager">
+		        <a class="PageButton prev fl" data-val="prev"><i class="icon-iconfont-zuosanjiao"></i>上一页</a>
+		        <ul>
+		        </ul>
+		        <a class="PageButton next fr" data-val="next">下一页<i class="icon-iconfont-yousanjiao"></i></a>
+		        <div class="count fr" id="count">共<em>0</em>条</div>
+		        <!-- <div class="jump_box fr clearfix">
+		          <span class="jump fl">跳转到</span>
+		          <div class="jump_text fl">
+		            <input type="text" name='text_box'>
+		          </div>
+		          <span class="jump fl">页</span> <a class="PageButton submit fl page_color2" data-val="submit">确认</a>
+		        </div> -->
+		     </div>
         </div>
 	</div>
 	<script type="text/javascript">
@@ -179,5 +197,95 @@ $('#user-form-save').click(function() {
 	</div>
 	</form>
 </div>     -->
+<script type="text/javascript">
+	$(function(){
+		//查询
+		var startTime = '';
+		var endTime = '';
+		$('#submit').on('click',function(){
+			startTime = $('#startTime').val();
+			endTime = $('#endTime').val();
+			getList();
+		});
+		// 初始化分页,获取添加分页的节点
+	    var myPager = new Pager($('#myPager'));
+		//  获取容器
+	    var dataList = $('#contList');
+		// 默认分页为1
+	    var page = 1;
+		//请求数据
+	    function getList() {
+	        $.ajax({
+	            url: '${ctx }/tooltip/toolitipList',
+	            type: 'POST',
+	            dataType: 'json',
+	            data: {
+	                pageNum: page,
+	                pageSize: 10
+	            },
+	            success: function (data) {
+	            	//console.log(data);
+	                //传入两个参数 ，1当前页 ，2分页总数
+	                myPager.paint(page, data.pages);
+	                //总条数
+	                $('#count em').text(data.total);
+	                //清空上一页数据
+	                dataList.empty();
+	                //插入数据
+	                $(createTab(data.list)).appendTo($(dataList));
+	                $("#contList li:nth-child(4n)").css("marginRight", "0px");
+	                if(data.total > 1){
+	                	//显示分页
+	                	$('#myPager').show();
+	                } 
+	            }
+	           /*  <td><fmt:formatDate value="${em.create_time }" pattern="yyyy-MM-dd"/></td>
+	            <td>${em.employeeName }</td>
+	            <td>${em.department}</td>
+	            <td>${em.job}</td>
+	           	<td><fmt:formatDate value="${em.entry_date }" pattern="yyyy-MM-dd"/></td>
+	           	<td>${em.message}</td> */
+	        });
+	    }
+		//返回、加载列表
+	    function createTab(list) {
+	        var data = list;
+	        var html = '';
+	        for (var i = 0, len = data.length; i < len; i++) {
+	            html += '<tr>' +
+	            	'<td>' + data[i].employeeName + '</td>' +
+	            	'<td>' + data[i].department + '</td>' +
+	            	'<td>' + data[i].job + '</td>' +
+	            	'<td>' + formatDate(data[i].entry_date) + '</td>' +
+	            	'<td>' + data[i].message + '</td>' +
+	            	'</tr>';
+	        }
+	        return html;
+	    }
+	    
+		// 监听页面切换
+	    myPager.on('page', function (data) {
+
+	        //获取当前点击页数,赋值给page
+	        page = data.page;
+	        // 更新数据
+	        getList();
+	     // 删除层
+	    });
+		//调用列表
+	    getList();
+		// 时间戳
+		function formatDate(data){
+			if(!data){
+				return '-';
+			}
+			var da = new Date(data);
+		    var year = da.getFullYear()+'年';
+		    var month = da.getMonth()+1+'月';
+		    var date = da.getDate()+'日';
+		    return [year,month,date].join('');
+		}
+	});
+</script>
 </body>
 </html>
