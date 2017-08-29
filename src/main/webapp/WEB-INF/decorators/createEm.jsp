@@ -21,11 +21,11 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>姓名:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="name" /> 
+				<input type="text" class="form-control" name="name" id="name"/> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label">性别:</label>
+			<label class="col-sm-3 control-label"><font color="red">*</font>性别:</label>
 			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="gender">
 					<option value="男">男</option>
@@ -34,40 +34,40 @@
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
 			<div class="col-sm-2 has-feedback"> 
-				<input type="text" class="form-control" name="nation" />
+				<input type="text" class="form-control" name="nation" id="nation"/>
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>出生日期:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control Wdate" name="birthday" onFocus="WdatePicker({lang:'zh-cn'})"/> 
+				<input type="text" class="form-control Wdate" name="birthday" id="birthday" onFocus="WdatePicker({lang:'zh-cn'})"/> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="card_id" /> 
+				<input type="text" class="form-control" name="card_id" id="card_id" /> 
 			</div>
 		</div>
 		
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>学历:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="education" /> 
+				<input type="text" class="form-control" id="education" name="education" /> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>毕业院校:</label>
 			<div class="col-sm-3 has-feedback">
-				<input type="text" class="form-control" name="school" /> 
+				<input type="text" class="form-control" name="school" id="school" /> 
 			</div>
 			<label class="col-sm-1 control-label"><font color="red">*</font>专业:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="major" /> 
+				<input type="text" class="form-control" name="major" id="major"/> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>入职日期:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control Wdate" name="entry_date" onFocus="WdatePicker({lang:'zh-cn'})"/> 
+				<input type="text" class="form-control Wdate" name="entry_date" id="entry_date" onFocus="WdatePicker({lang:'zh-cn'})"/> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -91,43 +91,43 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>手机号:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="telephone" /> 
+				<input type="text" class="form-control" name="telephone" id="telephone"/> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>QQ号:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="qq" /> 
+				<input type="text" class="form-control" name="qq" id="qq" /> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>邮箱:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="email" /> 
+				<input type="text" class="form-control" name="email" id="email" /> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>中心/部门:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="department" /> 
+				<input type="text" class="form-control" name="department" id="department" /> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>职务:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="job" /> 
+				<input type="text" class="form-control" name="job" id="job" /> 
 			</div>
 		</div>
  		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="level" /> 
+				<input type="text" class="form-control" name="level" id="level" /> 
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>岗位级别:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="post_level" /> 
+				<input type="text" class="form-control" name="post_level" id="post_level" /> 
 			</div>
 		</div>
  		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>税前新资:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="salary" value="0"/> 
+				<input type="text" class="form-control" name="salary" id="salary"/> 
 			</div>
 		</div>
 	</div>
@@ -140,39 +140,39 @@
 </form>
 
 <script type="text/javascript">
-/* $(function() {
+
+	menu.active('#employee-add');
+$(function() {
 	$('#inputForm').validate({
 		rules: {
-			supplierType:{
-				required: true
-			},
-			loginName: {
-				required: true,
-				rangelength : [6, 11],
-	      		remote: "${ctx}/common/checkLoginName?oldName=" + encodeURIComponent('')
-			},
 			name: {
 				required: true,
-				rangelength : [2, 20],
 			},
-			password: {
-				required: true,
-				rangelength : [6, 20]
+			nation:{
+				required: true
 			},
-			checkPassword: {
+			birthday: {
 				required: true,
-				equalTo : '#password'
+				dateISO:true 
 			},
-			mobPhone: {
+			card_id: {
 				required: true,
-				digits:true,
-				rangelength: [11,11],
-				remote: {
-					depends: function() {
-						return !('${cust.mobPhone}' == $('#mobPhone').val())
-					},
-					param: '${ctx}/common/checkMobPhoneSup'
-				}
+			},
+			education: {
+				required: true,
+			},
+			school: {
+				required: true,
+			},
+			major: {
+				required: true,
+			},
+			entry_date: {
+				required: true,
+				dateISO:true 
+			},
+			telephone: {
+				required: true,
 			},
 			email: {
 				required: true, 
@@ -184,49 +184,51 @@
 				rangelength: [5,13],
 				digits:true
 			},
-			introduction: {
+			department: {
 				required: true,
-				rangelength:[6,200]
 			},
-			strCNS: {
+			job: {
 				required: true
 			},
-			linkman: {
+			level: {
+				required: true
+			},
+			post_level: {
+				required: true
+			},
+			salary: {
 				required: true
 			}
 		},
 		messages: {
-			linkman:{
-				required: '联系人不能为空!'
-			},
-			strCNS:{
-				required: '请选择服务类别!'
-			},
-			supplierType:{
-				required: '请选择供应商类型'
-			},
-			loginName: {
-				required:'请填写登录账号',
-				rangelength:'登录名长度介于{0}和{1}之间',
-				remote: '登录名已经存在，请重新输入！'
-			},
 			name: {
-				required:'请填写公司名称',
-				rangelength:'请输入长度介于{0}和{1}之间的公司名称',
+				required:'姓名不能为空',
 			},
-			password: {
-				required:'请输入密码',
-				rangelength:'密码长度为{0}-{1}.',
+			nation:{
+				required: '民族不能为空'
 			},
-			checkPassword:{
-				required:'请重复填写密码',
-				equalTo:'两次填写密码不一致!'
+			birthday: {
+				required: '生日不能为空',
+				dateISO: '日期格式有误' 
 			},
-			mobPhone: {
-				required:'请输入手机号.',
-				digits:'请正确填写手机号',
-				rangelength:'请填写正确的11位手机号',
-				remote:'此手机号已注册!'
+			card_id: {
+				required: '身份证号不能为空',
+			},
+			education: {
+				required: '学历不能为空',
+			},
+			school: {
+				required: '毕业院校不能为空',
+			},
+			major: {
+				required: '专业不能为空',
+			},
+			entry_date: {
+				required: '入职日期不能为空',
+				dateISO: '日期格式有误'
+			},
+			telephone: {
+				required: '手机号不能为空',
 			},
 			email:{
 				required:'请填写邮箱!',
@@ -238,11 +240,22 @@
 				rangelength:'QQ长度在{0}-{1}之间',
 				digits:'请填写正确的QQ号'
 			},
-			introduction:{
-				required:'请填写简介',
-				rangelength:'简介字数为{0}-{1}之间'
+			department: {
+				required: '所属不能为空',
+			},
+			job: {
+				required: '职务不能为空'
+			},
+			level: {
+				required: '职级不能为空'
+			},
+			post_level: {
+				required: '岗位级别不能为空'
+			},
+			salary: {
+				required: '新资不能为空'
 			}
 		}
 	});
-}); */
+}); 
 </script>

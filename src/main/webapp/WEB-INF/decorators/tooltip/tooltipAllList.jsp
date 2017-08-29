@@ -69,6 +69,7 @@
 				          	})
 				          </script>
 <script type="text/javascript">
+menu.active('#user-add');
 $(function() {
 	var a ='${toolList}';
 	var b = a[1];
