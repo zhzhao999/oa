@@ -26,7 +26,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label">性别:</label>
 			<div class="col-sm-2 has-feedback"> 
-				<font class="form-control" >${em.gender }</font>
+				<font class="form-control" id="gender"></font>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
 			<div class="col-sm-2 has-feedback"> 
@@ -47,7 +47,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>学历:</label>
 			<div class="col-sm-6 has-feedback">
-				<font class="form-control" >${em.education }</font>
+				<font class="form-control" id="education" ></font>
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -69,15 +69,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>试用期:</label>
 			<div class="col-sm-2 has-feedback">
-				<c:if test="${em.probation == '1' }">
-					<font class="form-control">一个月</font>
-				</c:if>
-				<c:if test="${em.probation == '3' }">
-					<font class="form-control">三个月</font>
-				</c:if>
-				<c:if test="${em.probation == '6' }">
-					<font class="form-control">六个月</font>
-				</c:if>
+				<font class="form-control" id="probation"></font>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>转正日期:</label>
 			<div class="col-sm-2 has-feedback">
@@ -87,15 +79,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>合同年限:</label>
 			<div class="col-sm-2 has-feedback">
-				<c:if test="${em.contract_year == '2' }">
-					<font class="form-control">两年</font>
-				</c:if>
-				<c:if test="${em.contract_year == '3' }">
-					<font class="form-control">五年</font>
-				</c:if>
-				<c:if test="${em.contract_year == '5' }">
-					<font class="form-control">五年</font>
-				</c:if>
+				<font class="form-control" id="contract_year"></font>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>合同终止日期:</label>
 			<div class="col-sm-2 has-feedback">
@@ -119,28 +103,33 @@
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>中心/部门:</label>
+			<label class="col-sm-3 control-label"><font color="red">*</font>中心:</label>
 			<div class="col-sm-2 has-feedback">
-				<font class="form-control" >${em.department } </font>
+				<font class="form-control" id="center" ></font>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>职务:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>部门:</label>
+			<div class="col-sm-2 has-feedback">
+				<font class="form-control" id="department"></font>
+			</div>
+		</div>
+ 		<div class="form-group form-group-sm">
+ 		<label class="col-sm-3 control-label"><font color="red">*</font>职务:</label>
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.job } </font>
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>职级:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.level } </font>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>岗位级别:</label>
+			
+		</div>
+ 		<div class="form-group form-group-sm">
+ 		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.post_level } </font>
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>税前新资:</label>
-			<div class="col-sm-6 has-feedback">
+			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.salary } </font>
 			</div>
 		</div>
@@ -154,5 +143,68 @@
 </form>
 
 <script type="text/javascript">
-menu.active('#employee-export');
+menu.active('#employee-list');
+$(function(){
+	//请求性别
+	var url = "${ctx}/dict/getItem/001"
+	$.post(url,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].id == "${em.gender}"){
+				$("#gender").append(list[i].item_name);
+			}
+		}
+	});
+	//学历
+	var url2 = "${ctx}/dict/getItem/004"
+	$.post(url2,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].id == "${em.education }"){
+				$("#education").append(list[i].item_name);
+			}
+		}
+	});
+	//试用期
+	var url3 = "${ctx}/dict/getItem/002"
+	$.post(url3,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].item_code == "${em.probation }"){
+				$("#probation").append(list[i].item_name);
+			}
+		}
+	});
+	//合同年限
+	var url4 = "${ctx}/dict/getItem/003"
+	$.post(url4,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].item_code == "${em.contract_year }"){
+				$("#contract_year").append(list[i].item_name);
+			}
+		}
+	});
+	
+	//中心
+	var url5 = "${ctx}/dict/getItem/005"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].id == "${em.center }"){
+				$("#center").append(list[i].item_name);
+			}
+		}
+	});
+	//  部门。。
+	var url5 = "${ctx}/dict/getItem/006"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].id == "${em.department }"){
+				$("#department").append(list[i].item_name);
+			}
+		}
+	});
+})
 </script>

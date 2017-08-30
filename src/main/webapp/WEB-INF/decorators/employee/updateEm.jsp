@@ -27,20 +27,7 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label">性别:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="gender">
-					<c:if test="${em.gender == '男'}">
-						<option value="男" selected>男</option>
-						<option value="女">女</option>
-					</c:if>
-					<c:if test="${em.gender == '女'}">
-						<option value="男" >男</option>
-						<option value="女" selected>女</option>
-					</c:if>
-					<c:if test="${empty em.gender }">
-						<option value="男" selected>男</option>
-						<option value="女" >女</option>
-					</c:if>
-				</select>
+				<select class="form-control" name="gender" id="gender"></select>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
 			<div class="col-sm-2 has-feedback"> 
@@ -62,7 +49,8 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>学历:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" name="education" value="${em.education }" /> 
+			<%-- 	<input type="text" class="form-control" name="education" value="${em.education }" />  --%>
+				<select class="form-control" name="education" id="education"></select>
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -85,53 +73,11 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>试用期:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="probation">
-					<c:if test="${em.probation == '1' }">
-						<option value="1" selected>一个月</option>
-						<option value="3">三个月</option>
-						<option value="6">六个月</option>
-					</c:if>
-					<c:if test="${em.probation == '3' }">
-						<option value="1" >一个月</option>
-						<option value="3" selected>三个月</option>
-						<option value="6">六个月</option>
-					</c:if>
-					<c:if test="${em.probation == '6' }">
-						<option value="1" >一个月</option>
-						<option value="3">三个月</option>
-						<option value="6" selected>六个月</option>
-					</c:if>
-					<c:if test="${em.probation == '0'}">
-						<option value="1" >一个月</option>
-						<option value="3" selected>三个月</option>
-						<option value="6">六个月</option>
-					</c:if>
-					
-				</select>
+				<select class="form-control" name="probation" id="probation"></select>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>合同年限:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="contract_year">
-					<c:if test="${em.contract_year == '2' }">
-						<option value="2" selected>两年</option>
-						<option value="3">三年</option>
-						<option value="5">五年</option>
-					</c:if>
-					<c:if test="${em.contract_year == '3' }">
-						<option value="2">两年</option>
-						<option value="3" selected>三年</option>
-						<option value="5">五年</option>
-					</c:if>
-					<c:if test="${em.contract_year == '5' }">
-						<option value="2">两年</option>
-						<option value="3">三年</option>
-						<option value="5" selected>五年</option>
-					</c:if>
-					<c:if test="${em.contract_year == '0'}">
-						<option value="2" selected>两年</option>
-						<option value="3" >三年</option>
-						<option value="5" >五年</option>
-					</c:if>
+				<select class="form-control" name="contract_year" id="contract_year">
 				</select>
 			</div>
 		</div>
@@ -152,39 +98,123 @@
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>中心/部门:</label>
+			<label class="col-sm-3 control-label"><font color="red">*</font>中心:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="department" value="${em.department }" /> 
+				<select class="form-control" name="center" id="center"></select>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>职务:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>部门:</label>
+			<div class="col-sm-2 has-feedback">
+				<select class="form-control" name="department" id="department"></select>
+			</div>
+		</div>
+ 		<div class="form-group form-group-sm">
+ 		<label class="col-sm-3 control-label"><font color="red">*</font>职务:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="job" value="${em.job }" /> 
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>职级:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="level" value="${em.level }"/> 
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>岗位级别:</label>
+		</div>
+ 		<div class="form-group form-group-sm">
+ 		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="post_level" value="${em.post_level }" /> 
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>税前新资:</label>
-			<div class="col-sm-6 has-feedback">
+			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="salary" value="${em.salary}"/> 
 			</div>
 		</div>
 	</div>
 	<div class="modal-footer">
 		<p class="text-center">
-			<input id="agent-submit" type="submit" class="btn-u btn-u-red w100" value="修改">
+			<input id="agent-submit" type="submit" class="btn-u btn-u-red w100" value="修改" >
 			<input type="button" name="button1" id="button1" value="取消" onclick="history.go(-1)" class="btn-u btn-u-red w100">
 		</p>
 	</div>
 </form>
 <script type="text/javascript">
-menu.active('#employee-export');
+menu.active('#employee-list');
+
+$(function() {
+	//请求性别
+	var url = "${ctx}/dict/getItem/001"
+	$.post(url,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == "${em.gender}") {
+				$("#gender").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#gender").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	
+	//学历
+	var url2 = "${ctx}/dict/getItem/004"
+	$.post(url2,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == "${em.education}") {
+				$("#education").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#education").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	
+	//试用期
+	var url3 = "${ctx}/dict/getItem/002"
+	$.post(url3,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].item_code == "${em.probation}") {
+				$("#probation").append("<option selected value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#probation").append("<option value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	//合同年限
+	var url4 = "${ctx}/dict/getItem/003"
+	$.post(url4,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].item_code == "${em.contract_year}") {
+				$("#contract_year").append("<option selected value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#contract_year").append("<option value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	
+	//中心
+	var url5 = "${ctx}/dict/getItem/005"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		$("#center").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == "${em.center }") {
+				$("#center").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#center").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	//  部门。。
+	var url5 = "${ctx}/dict/getItem/006"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		$("#department").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == "${em.department }") {
+				$("#department").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}else{
+				$("#department").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+})
 </script>

@@ -28,6 +28,7 @@ public class Employee implements Serializable{
 	private Date regular_date;//转正日期
 	private int contract_year;//合同年限
 	private Date contract_end_date;//合同终止日期
+	private String center;//中心
 	private String department;//部门
 	private String job;//职务
 	private int on_job;
@@ -181,6 +182,12 @@ public class Employee implements Serializable{
 	}
 	public void setEe_id(String ee_id) {
 		this.ee_id = ee_id;
+	}
+	public String getCenter() {
+		return center;
+	}
+	public void setCenter(String center) {
+		this.center = center;
 	}
 	
 }

@@ -16,7 +16,7 @@
 			level,post_level,salary,
 			entry_date,probation,regular_date,
 			contract_year,contract_end_date,
-			department,job,on_job)
+			center,department,job,on_job)
         values 
         	(#{ee_id},#{name},#{gender},#{nation},
         	#{birthday},#{zodiac},#{card_id},
@@ -25,7 +25,7 @@
         	#{level},#{post_level},#{salary},
         	#{entry_date},#{probation},#{regular_date},
         	#{contract_year},#{contract_end_date},
-        	#{department},#{job},#{on_job})
+        	#{center},#{department},#{job},#{on_job})
 	</insert>
 	
 	<select id="findAll" resultType="cnmei.oa.pojo.Employee">
@@ -46,7 +46,7 @@
         	level = #{level}, post_level = #{post_level},salary = #{salary},
         	entry_date= #{entry_date},probation=  #{probation},regular_date = #{regular_date},
         	contract_year= #{contract_year},contract_end_date = #{contract_end_date},
-        	department= #{department},job = #{job}
+        	center= #{center},department= #{department},job = #{job}
 		where id = #{id} 
 	</update>
 	
