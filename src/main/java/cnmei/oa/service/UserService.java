@@ -16,4 +16,5 @@ public interface UserService {
 	ResultBean insertUser(User user);
 	ResultBean deleteUser(Integer id);
 	List<User> findUserByNameM(String name);
+	User findUserById(Integer id);
 }

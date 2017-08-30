@@ -11,17 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cnmei.oa.bean.ResultBean;
+import cnmei.oa.pojo.Log;
 import cnmei.oa.pojo.User;
+import cnmei.oa.service.LogService;
 import cnmei.oa.service.UserService;
 import cnmei.oa.utils.JsonUtils;
 import cnmei.oa.utils.MD5Utils;
 
 @Controller
 @RequestMapping("/security")
-public class SecurityController {
+public class SecurityController extends BaseController{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired 
+	private LogService logService;
 	
 	@RequestMapping(value="checkPassword")
 	@ResponseBody
@@ -50,6 +55,12 @@ public class SecurityController {
 		boolean b = userService.ChangePassword(user);
 		ResultBean resultBean = new ResultBean();
 		if(b){
+			//写日志
+			Log log = new Log();
+			log.setUser_name(getCurrentUser(request).getName());
+			log.setOpe_module("用户管理");
+			log.setOpe_context("修改密码成功");
+			logService.addLog(log);
 			resultBean.setCode(1);
 			resultBean.setMessage("修改成功");
 		}else{

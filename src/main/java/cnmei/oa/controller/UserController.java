@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cnmei.oa.bean.ResultBean;
+import cnmei.oa.pojo.Log;
 import cnmei.oa.pojo.User;
+import cnmei.oa.service.LogService;
 import cnmei.oa.service.UserService;
 import cnmei.oa.utils.MD5Utils;
 
@@ -21,6 +23,9 @@ public class UserController extends BaseController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired 
+	private LogService logService;
 	
 	@RequestMapping("/login")
 	public String login(){
@@ -40,6 +45,12 @@ public class UserController extends BaseController {
 	public String userLogin(User user,HttpServletRequest request){
 		boolean login = userService.login(user,request);
 		if (login) {
+			//写日志
+			Log log = new Log();
+			log.setUser_name(getCurrentUser(request).getName());
+			log.setOpe_module("用户登录");
+			log.setOpe_context(getCurrentUser(request).getName()+"用户登录成功");
+			logService.addLog(log);
 			return "redirect:/showHomepage";
 		}else{
 			request.setAttribute("errorMsg", "用户名或密码错误");
@@ -79,6 +90,14 @@ public class UserController extends BaseController {
 		user.setPassword(MD5Utils.md5(userPassword));
 		user.setCreateTime(new Date());
 		ResultBean resultBean = userService.insertUser(user);
+		if(resultBean.getCode()==1){
+			//写日志
+			Log log = new Log();
+			log.setUser_name(getCurrentUser(request).getName());
+			log.setOpe_module("用户管理");
+			log.setOpe_context("添加"+user.getName()+"用户成功！！！");
+			logService.addLog(log);
+		}
 		return resultBean;
 	}
 	
@@ -91,7 +110,16 @@ public class UserController extends BaseController {
 			resultBean.setMessage("您不是超级管理员,没有权限删除用户！！！");
 			return resultBean;
 		}
+		User user = userService.findUserById(id);
 		ResultBean resultBean = userService.deleteUser(id);
+		if(resultBean.getCode()==1){
+			//写日志
+			Log log = new Log();
+			log.setUser_name(getCurrentUser(request).getName());
+			log.setOpe_module("用户管理");
+			log.setOpe_context("删除"+user.getName()+"用户成功！！！");
+			logService.addLog(log);
+		}
 		return resultBean;
 	}
 	

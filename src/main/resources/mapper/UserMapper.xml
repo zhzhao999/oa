@@ -31,4 +31,7 @@
 	<select id="findUserByNameM" resultMap="BaseResultMap">
 		select * from t_user where name like '%' #{name} '%'
 	</select>
+	<select id="findUserById" parameterType="Integer" resultType="cnmei.oa.pojo.User">
+		select * from t_user where id = #{id};
+	</select>
 </mapper>

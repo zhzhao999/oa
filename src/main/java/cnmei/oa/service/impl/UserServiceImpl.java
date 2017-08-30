@@ -108,4 +108,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> findUserByNameM(String name) {
 		return  userMapper.findUserByNameM(name);
 	}
+
+	@Override
+	public User findUserById(Integer id) {
+		return  userMapper.findUserById(id);
+	}
 }

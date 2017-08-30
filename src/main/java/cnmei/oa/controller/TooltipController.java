@@ -16,7 +16,9 @@ import com.github.pagehelper.PageInfo;
 
 import cnmei.oa.bean.ResultBean;
 import cnmei.oa.bean.TooltipVo;
+import cnmei.oa.pojo.Log;
 import cnmei.oa.pojo.Tooltip;
+import cnmei.oa.service.LogService;
 import cnmei.oa.service.TooltipService;
 
 @Controller
@@ -25,6 +27,9 @@ public class TooltipController extends BaseController{
 	
 	@Autowired
 	private TooltipService tooltipService;
+	
+	@Autowired 
+	private LogService logService;
 
 	@ResponseBody
 	@RequestMapping("searchRegularE")
@@ -69,8 +74,16 @@ public class TooltipController extends BaseController{
 	
 	@RequestMapping(value={"/modificationStatus"})
 	@ResponseBody
-	public ResultBean modificationStatus(Integer id,boolean fin_status){
+	public ResultBean modificationStatus(Integer id,boolean fin_status,HttpServletRequest request){
 		ResultBean resultBean  = tooltipService.updateFinStatus(id,!fin_status);
+		if(resultBean.getCode()==1){
+			//写日志
+			Log log = new Log();
+			log.setUser_name(getCurrentUser(request).getName());
+			log.setOpe_module("消息提醒");
+			log.setOpe_context("消息状态修改成功！！！");
+			logService.addLog(log);
+		}
 		return resultBean;
 	}
 }

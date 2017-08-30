@@ -18,4 +18,6 @@ public interface UserMapper {
 	public void deleteUser(Integer id);
 
 	public List<User> findUserByNameM(String name);
+
+	public User findUserById(Integer id);
 }
