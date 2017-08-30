@@ -27,9 +27,9 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>性别:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="gender">
-					<option value="男">男</option>
-					<option value="女">女</option>
+				<select class="form-control" name="gender" id="gender">
+					<!-- <option value="男">男</option>
+					<option value="女">女</option> -->
 				</select>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
@@ -51,7 +51,8 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>学历:</label>
 			<div class="col-sm-6 has-feedback">
-				<input type="text" class="form-control" id="education" name="education" /> 
+			<select class="form-control" name="education" id="education"></select>
+				<!-- <input type="text" class="form-control" id="education" name="education" />  -->
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -73,18 +74,18 @@
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>试用期:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="probation">
-					<option value="1">一个月</option>
+				<select class="form-control" name="probation" id="probation">
+					<!-- <option value="1">一个月</option>
 					<option value="3" selected>三个月</option>
-					<option value="6">六个月</option>
+					<option value="6">六个月</option> -->
 				</select>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>合同年限:</label>
 			<div class="col-sm-2 has-feedback">
-				<select class="form-control" name="contract_year">
-					<option value="2">两年</option>
+				<select class="form-control" name="contract_year" id="contract_year">
+					<!-- <option value="2">两年</option>
 					<option value="3">三年</option>
-					<option value="5">五年</option>
+					<option value="5">五年</option> -->
 				</select>
 			</div>
 		</div>
@@ -105,28 +106,32 @@
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>中心/部门:</label>
+			<label class="col-sm-3 control-label"><font color="red">*</font>中心:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="department" id="department" /> 
+				<select class="form-control" name="center" id="center"></select>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>职务:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>部门:</label>
+			<div class="col-sm-2 has-feedback">
+				<select class="form-control" name="department" id="department"></select>
+			</div>
+		</div>
+ 		<div class="form-group form-group-sm">
+ 			<label class="col-sm-3 control-label"><font color="red">*</font>职务:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="job" id="job" /> 
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>职级:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="level" id="level" /> 
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>岗位级别:</label>
+		</div>
+ 		<div class="form-group form-group-sm">
+ 		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="post_level" id="post_level" /> 
 			</div>
-		</div>
- 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>税前新资:</label>
-			<div class="col-sm-6 has-feedback">
+			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="salary" id="salary"/> 
 			</div>
 		</div>
@@ -254,6 +259,58 @@ $(function() {
 			salary: {
 				required: '新资不能为空'
 			}
+		}
+	});
+	
+	//请求性别
+	var url = "${ctx}/dict/getItem/001"
+	$.post(url,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			$("#gender").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+		}
+	});
+	//学历
+	var url2 = "${ctx}/dict/getItem/004"
+	$.post(url2,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			$("#education").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+		}
+	});
+	//试用期
+	var url3 = "${ctx}/dict/getItem/002"
+	$.post(url3,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			$("#probation").append("<option value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+		}
+	});
+	//合同年限
+	var url4 = "${ctx}/dict/getItem/003"
+	$.post(url4,null,function(data){
+		var list = data.data;
+		for (var i = 0; i < list.length; i++) {
+			$("#contract_year").append("<option value='"+list[i].item_code+"'>"+list[i].item_name+"</option>");
+		}
+	});
+	
+	//中心
+	var url5 = "${ctx}/dict/getItem/005"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		$("#center").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			$("#center").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+		}
+	});
+	//  部门。。
+	var url5 = "${ctx}/dict/getItem/006"
+	$.post(url5,null,function(data){
+		var list = data.data;
+		$("#department").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			$("#department").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
 		}
 	});
 }); 

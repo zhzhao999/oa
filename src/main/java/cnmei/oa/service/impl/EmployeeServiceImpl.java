@@ -107,7 +107,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				em.setRegular_date(regDate);
 			}
 			if (conYear != 0) {
-				Date conDate = DateUtils.getParseDate(eDate, Calendar.YEAR, pro);
+				Date conDate = DateUtils.getParseDate(eDate, Calendar.YEAR, conYear);
 				em.setContract_end_date(conDate);
 			}
 		}
