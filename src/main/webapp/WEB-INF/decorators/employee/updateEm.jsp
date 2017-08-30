@@ -139,6 +139,126 @@
 menu.active('#employee-list');
 
 $(function() {
+	$('#inputForm').validate({
+		rules: {
+			name: {
+				required: true,
+			},
+			nation:{
+				required: true
+			},
+			birthday: {
+				required: true,
+				dateISO:true 
+			},
+			card_id: {
+				required: true,
+			},
+			education: {
+				required: true,
+			},
+			school: {
+				required: true,
+			},
+			major: {
+				required: true,
+			},
+			entry_date: {
+				required: true,
+				dateISO:true 
+			},
+			telephone: {
+				required: true,
+			},
+			email: {
+				required: true, 
+				rangelength: [6,30],
+				email:true
+			},
+			qq: {
+				required: true, 
+				rangelength: [5,13],
+				digits:true
+			},
+			department: {
+				required: true,
+			},
+			center: {
+				required: true,
+			},
+			job: {
+				required: true
+			},
+			level: {
+				required: true
+			},
+			post_level: {
+				required: true
+			},
+			salary: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required:'姓名不能为空',
+			},
+			nation:{
+				required: '民族不能为空'
+			},
+			birthday: {
+				required: '生日不能为空',
+				dateISO: '日期格式有误' 
+			},
+			card_id: {
+				required: '身份证号不能为空',
+			},
+			education: {
+				required: '学历不能为空',
+			},
+			school: {
+				required: '毕业院校不能为空',
+			},
+			major: {
+				required: '专业不能为空',
+			},
+			entry_date: {
+				required: '入职日期不能为空',
+				dateISO: '日期格式有误'
+			},
+			telephone: {
+				required: '手机号不能为空',
+			},
+			email:{
+				required:'请填写邮箱!',
+				rangelength:'邮箱长度在{0}-{1}之间',
+				email:'请填写正确格式的邮箱!'
+			},
+			qq: {
+				required:'请填写QQ号!',
+				rangelength:'QQ长度在{0}-{1}之间',
+				digits:'请填写正确的QQ号'
+			},
+			center: {
+				required: '中心不能为空',
+			},
+			department: {
+				required: '部门不能为空',
+			},
+			job: {
+				required: '职务不能为空'
+			},
+			level: {
+				required: '职级不能为空'
+			},
+			post_level: {
+				required: '岗位级别不能为空'
+			},
+			salary: {
+				required: '新资不能为空'
+			}
+		}
+	});
 	//请求性别
 	var url = "${ctx}/dict/getItem/001"
 	$.post(url,null,function(data){

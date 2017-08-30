@@ -191,6 +191,9 @@ $(function() {
 			department: {
 				required: true,
 			},
+			center: {
+				required: true,
+			},
 			job: {
 				required: true
 			},
@@ -244,8 +247,11 @@ $(function() {
 				rangelength:'QQ长度在{0}-{1}之间',
 				digits:'请填写正确的QQ号'
 			},
+			center: {
+				required: '中心不能为空',
+			},
 			department: {
-				required: '所属不能为空',
+				required: '部门不能为空',
 			},
 			job: {
 				required: '职务不能为空'
