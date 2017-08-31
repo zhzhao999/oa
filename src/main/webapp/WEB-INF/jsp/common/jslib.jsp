@@ -12,3 +12,5 @@
 <script src="${ctx}/static/legacy/js/bootstrap-validation/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/bootstrap.js"></script>
 <script type="text/javascript" src="${ctx }/js/page.js"></script>
+
+<link rel="stylesheet" href="${ctx}/static/legacy/js/jquery/jquery-ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">

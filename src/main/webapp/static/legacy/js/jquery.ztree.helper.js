@@ -10,15 +10,19 @@ function TreeSetting(url, type) {
 	var _url  = url ? url : null;
 	
 	this.view = {
-		selectedMulti : false,
-		dblClickExpand: zTree.lockRootNode
+		showLine: true, 
+        selectedMulti: false,  
+        dblClickExpand: false 
 	}
 	
 	this.edit = {}
 	
 	this.data = {
 		simpleData: {
-			enable: true
+			 enable: true,  
+	         idKey:"id",  
+	         pIdKey:"pId",
+	         rootPId:null
 		}
 	}
 	

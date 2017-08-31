@@ -6,4 +6,6 @@ import cnmei.oa.pojo.Dict;
 
 public interface DictMapper {
 	List<Dict> getDictByTypeCode(String typeCode);
+	List<Dict> findAllType();
+	List<Dict> findAll();
 }

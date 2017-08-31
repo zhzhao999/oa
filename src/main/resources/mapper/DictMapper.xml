@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cnmei.oa.mapper.DictMapper">
 	<select id="getDictByTypeCode" parameterType="String" resultType="cnmei.oa.pojo.Dict">
-		select * from t_dict where type_code = #{typeCode}
+		select * from t_dict where type_code = #{typeCode} and  enable = 1
+	</select>
+	
+	<select id="findAllType" resultType="cnmei.oa.pojo.Dict">
+		SELECT type_code,type_name FROM t_dict GROUP BY type_code ORDER BY type_code ASC
+	</select>
+	
+	<select id="findAll" resultType="cnmei.oa.pojo.Dict">
+		SELECT * FROM t_dict where enable = 1 ORDER BY type_code desc 
 	</select>
 	
 </mapper>

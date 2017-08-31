@@ -27,5 +27,17 @@ public class DictServiceImpl implements DictService {
 		return null;
 	}
 
+	@Override
+	public List<Dict> findAllType() {
+		List<Dict> typeList = dictMapper.findAllType();
+		return typeList;
+	}
+
+	@Override
+	public List<Dict> findAll() {
+		List<Dict> typeList = dictMapper.findAll();
+		return typeList;
+	}
+
 	
 }
