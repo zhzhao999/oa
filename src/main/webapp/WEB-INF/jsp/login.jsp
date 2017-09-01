@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>OA登录</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="${ctx }/static/legacy/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${ctx }/static/legacy/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/htmleaf-demo.css">
 	
