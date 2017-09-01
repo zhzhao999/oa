@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import cnmei.oa.bean.SalaryVO;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Log;
 import cnmei.oa.pojo.Salary;
@@ -47,13 +48,13 @@ public class EmployeeController extends BaseController{
 	public String saveEmployee(Employee em,String level,String post_level,HttpServletRequest request){
 		//添加员工
 		employeeService.addEmployee(em);
-		//写日志
+		//添加员工薪资
 		Salary salary = new Salary();
 		salary.setEmployee_id(em.getId());
 		salary.setLevel(level);
 		salary.setPost_level(post_level);
 		salaryService.addSalary(salary);
-		
+		//写日志
 		Log log = new Log();
 		log.setUser_name(getCurrentUser(request).getName());
 		log.setOpe_module("员工模块");
@@ -96,20 +97,33 @@ public class EmployeeController extends BaseController{
 	
 	@RequestMapping(value="/showDetail/{id}")
 	public String showDetail(Model model,@PathVariable String id){
+		//员工基本信息
 		Employee em = employeeService.findOnd(id);
+		//员工新资信息
+		SalaryVO salary = salaryService.findSalaryByEId(id);
 		model.addAttribute("em", em);
+		model.addAttribute("salary", salary);
 		return "decorators/employee/showEm";
 	}
 	@RequestMapping(value="/showUpdate/{id}")
 	public String showUpdate(Model model,@PathVariable String id){
 		Employee em = employeeService.findOnd(id);
+		Salary salary = salaryService.findByEId(id);
 		model.addAttribute("em", em);
+		model.addAttribute("salary", salary);
 		return "decorators/employee/updateEm";
 	}
 	
 	@RequestMapping(value="/updateEm",method=RequestMethod.POST)
-	public String updateEm(Employee em,HttpServletRequest request){
+	public String updateEm(Employee em,String level,String post_level,HttpServletRequest request){
+		//修改员工基本信息
 		employeeService.updateEm(em);
+		//修改员工薪资
+		Salary salary = new Salary();
+		salary.setEmployee_id(em.getId());
+		salary.setLevel(level);
+		salary.setPost_level(post_level);
+		salaryService.updateSalary(salary);
 		//写日志
 		Log log = new Log();
 		log.setUser_name(getCurrentUser(request).getName());

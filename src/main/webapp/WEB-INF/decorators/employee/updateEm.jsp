@@ -114,18 +114,20 @@
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="level" value="${em.level }"/> 
+				<select class="form-control" name="level" id="level"></select>
 			</div>
 		</div>
  		<div class="form-group form-group-sm">
  		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
-			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="post_level" value="${em.post_level }" /> 
+			<div class="col-sm-6 has-feedback">
+				<select class="form-control" name="post_level" id="post_level"></select>
 			</div>
+			<%--
 			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="salary" value="${em.salary}"/> 
+				 <input type="text" class="form-control" name="salary" value="${em.salary}"/>  
 			</div>
+			--%>
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -333,6 +335,32 @@ $(function() {
 				$("#department").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
 			}else{
 				$("#department").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+			}
+		}
+	});
+	//  职级
+	var url6 = "${ctx}/salary/dict/level/type"
+	$.post(url6,null,function(data){
+		var list = data.data;
+		$("#level").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			if(list[i].id == "${salary.level}"){
+				$("#level").append("<option selected value='"+list[i].id+"'>"+list[i].type_name+"</option>");
+			}else{
+				$("#level").append("<option value='"+list[i].id+"'>"+list[i].type_name+"</option>");
+			}
+		}
+	});
+	//  岗位级别
+	var url7 = "${ctx}/salary/dict/postLevel/type"
+	$.post(url7,null,function(data){
+		var list = data.data;
+		$("#post_level").append("<option value=''>请选择</option>");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].id == "${salary.post_level}") {
+				$("#post_level").append("<option selected value='"+list[i].id+"'>"+list[i].type_name+"</option>");
+			}else{
+				$("#post_level").append("<option value='"+list[i].id+"'>"+list[i].type_name+"</option>");
 			}
 		}
 	});

@@ -148,7 +148,7 @@ menu.active('#employee-list');
 	            html += '<tr>' +
 	            	'<td>' + data[i].ee_id + '</td>' +
 	            	'<td>' + data[i].name + '</td>' +
-	            	'<td>' + data[i].department + '</td>' +
+	            	'<td>' + data[i].department_name + '</td>' +
 	            	'<td>' + data[i].job + '</td>' +
 	            	'<td>' + formatDate(data[i].entry_date) + '</td>' +
 	            	'<td>' +

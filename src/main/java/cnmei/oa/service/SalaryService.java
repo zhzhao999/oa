@@ -9,4 +9,7 @@ import cnmei.oa.pojo.Salary;
 public interface SalaryService {
 	void addSalary(Salary salary);
 	List<SalaryVO> findSearch(HashMap<String, Object> params);
+	SalaryVO findSalaryByEId(String id);
+	Salary findByEId(String id);
+	void updateSalary(Salary salary);
 }

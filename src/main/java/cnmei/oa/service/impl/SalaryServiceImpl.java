@@ -28,21 +28,50 @@ public class SalaryServiceImpl implements SalaryService {
 	public List<SalaryVO> findSearch(HashMap<String, Object> params) {
 		List<SalaryVO> list = salaryMapper.findSearch(params);
 		for (SalaryVO salaryVO : list) {
-			//计算工龄
-			Date entry_date = salaryVO.getEntry_date();
-			int age = DateUtils.getWorkAge(entry_date);
-			salaryVO.setWork_age(age);
-			//新资合计
-			int pSalary = salaryVO.getPost_salary();//岗位工资
-			int mPay = salaryVO.getMerit_pay();//绩效工资
-			int award = salaryVO.getFull_award();//满勤奖
-			int bPay = salaryVO.getBasic_pay();//职级对应工资
-			int oSubsidy = salaryVO.getOil_subsidy();//油补
-			int other = salaryVO.getOther();//其他
-			salaryVO.setTotal(pSalary + mPay + award + bPay + oSubsidy + other);
+			calculateAgeTotal(salaryVO);
 		}
 		return list;
 	}
+
+	@Override
+	public SalaryVO findSalaryByEId(String eId) {
+		SalaryVO salary = salaryMapper.findSalaryByEId(eId);
+		calculateAgeTotal(salary);
+		return salary;
+	}
 	
+	/**
+	 * 计算工龄 和 新资合计
+	 * @param vo
+	 * @return
+	 */
+	public SalaryVO calculateAgeTotal(SalaryVO vo){
+		//计算工龄
+		Date entry_date = vo.getEntry_date();
+		if (entry_date != null) {
+			int age = DateUtils.getWorkAge(entry_date);
+			vo.setWork_age(age);
+		}
+		//新资合计
+		int pSalary = vo.getPost_salary();//岗位工资
+		int mPay = vo.getMerit_pay();//绩效工资
+		int award = vo.getFull_award();//满勤奖
+		int bPay = vo.getBasic_pay();//职级对应工资
+		int oSubsidy = vo.getOil_subsidy();//油补
+		int other = vo.getOther();//其他
+		vo.setTotal(pSalary + mPay + award + bPay + oSubsidy + other);
+		return vo;
+	}
+
+	@Override
+	public Salary findByEId(String id) {
+		return salaryMapper.findByEId(id);
+	}
+
+	@Override
+	public void updateSalary(Salary salary) {
+		salaryMapper.updateSalary(salary);
+		
+	}
 
 }

@@ -52,9 +52,9 @@
 	</update>
 
 	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.pojo.Employee">
-		select * from t_employee
+		select e.*,d.`item_name` AS department_name from t_employee e ,t_dict d
         <where>
-        	on_job = 1
+        	e.`department` = d.`id` and on_job = 1
         	<if test="name != null and name != ''">
                 AND name like '%${name}%'
             </if>

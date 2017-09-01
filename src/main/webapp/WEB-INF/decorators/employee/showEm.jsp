@@ -19,8 +19,12 @@
 		<p class="alert alert-danger hide"></p>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>姓名:</label>
-			<div class="col-sm-6 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.name }</font>
+			</div>
+			<label class="col-sm-2 control-label"><font color="red">*</font>员工编号:</label>
+			<div class="col-sm-2 has-feedback">
+				<font class="form-control" >${em.ee_id }</font>
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
@@ -119,18 +123,18 @@
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>职级:</label>
 			<div class="col-sm-2 has-feedback">
-				<font class="form-control" >${em.level } </font>
+				<font class="form-control" id="level">${salary.l_name } </font>
 			</div>
 			
 		</div>
  		<div class="form-group form-group-sm">
  		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
 			<div class="col-sm-2 has-feedback">
-				<font class="form-control" >${em.post_level } </font>
+				<font class="form-control" id="post_level" >${salary.p_name } </font>
 			</div>
 			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
 			<div class="col-sm-2 has-feedback">
-				<font class="form-control" >${em.salary } </font>
+				<font class="form-control" >${salary.total } </font>
 			</div>
 		</div>
 	</div>

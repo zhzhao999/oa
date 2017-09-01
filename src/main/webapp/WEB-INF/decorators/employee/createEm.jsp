@@ -127,14 +127,13 @@
 		</div>
  		<div class="form-group form-group-sm">
  		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
-			<div class="col-sm-2 has-feedback">
-				<!-- <input type="text" class="form-control" name="post_level" id="post_level" />  -->
+			<div class="col-sm-6 has-feedback">
 				<select class="form-control" name="post_level" id="post_level"></select>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<!-- <label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
 			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="salary" id="salary"/> 
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="modal-footer">
