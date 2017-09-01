@@ -61,18 +61,6 @@
 			<label class="col-sm-2 control-label"> 
 				<input name="eType" type="checkbox" value="部门" />部门
 			</label> 
-			<!-- <label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="职务" />职务
-			</label> 
-			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="职级" />职级
-			</label> 
-			<label class="col-sm-2 control-label"> 
-				<input name="eType" type="checkbox" value="新资" />新资
-			</label> -->
-		</div>
-		<div class="form-group form-group-sm">
-			<label class="col-sm-2 control-label"></label>
 			<label class="col-sm-2 control-label"> 
 				<input name="eType" type="checkbox" value="手机" />手机
 			</label> 
@@ -83,6 +71,20 @@
 				<input name="eType" type="checkbox" value="邮箱" />邮箱
 			</label> 
 		</div>
+		<!-- 
+		<div class="form-group form-group-sm">
+			<label class="col-sm-2 control-label"></label>
+			<label class="col-sm-2 control-label"> 
+				<input name="eType" type="checkbox" value="职务" />职务
+			</label> 
+			<label class="col-sm-2 control-label"> 
+				<input name="eType" type="checkbox" value="职级" />职级
+			</label> 
+			<label class="col-sm-2 control-label"> 
+				<input name="eType" type="checkbox" value="新资" />新资
+			</label>
+		</div>
+		 -->
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 text-right"> 
 				<h4>排序方式</h4>

@@ -73,11 +73,35 @@
 		SELECT COUNT(id) FROM t_employee WHERE  entry_date =  DATE_FORMAT(#{time}, '%Y-%m-%d')
 	</select>
 	
-	<select id="findAllBySort" resultType="cnmei.oa.pojo.Employee">
-		SELECT * FROM t_employee e WHERE e.`on_job` = 1 ORDER BY e.department, e.`entry_date` 
+	<select id="findAllBySort" resultType="cnmei.oa.bean.EmployeeVO">
+		SELECT 
+			e.*,d1.`item_name` AS gender_name,d2.`item_name` AS education_name ,
+			d3.`item_name` AS center_name, d4.`item_name` AS department_name 
+		FROM 
+			t_employee e,t_dict d1,t_dict d2,t_dict d3 ,t_dict d4 
+		WHERE 
+			e.`on_job` = 1
+			AND e.`gender` = d1.`id` 
+			AND e.`education` = d2.`id` 
+			AND e.`center` = d3.`id` 
+			AND e.`department` = d4.`id` 
+		ORDER BY 
+			e.`department`,e.`entry_date` 
 	</select>
-	<select id="findAllByTime" resultType="cnmei.oa.pojo.Employee">
-		SELECT * FROM t_employee e WHERE e.`on_job` = 1 ORDER BY e.`entry_date` 
+	<select id="findAllByTime" resultType="cnmei.oa.bean.EmployeeVO">
+		SELECT 
+			e.*,d1.`item_name` AS gender_name,d2.`item_name` AS education_name ,
+			d3.`item_name` AS center_name, d4.`item_name` AS department_name 
+		FROM 
+			t_employee e,t_dict d1,t_dict d2,t_dict d3 ,t_dict d4 
+		WHERE 
+			e.`on_job` = 1
+			AND e.`gender` = d1.`id` 
+			AND e.`education` = d2.`id` 
+			AND e.`center` = d3.`id` 
+			AND e.`department` = d4.`id` 
+		ORDER BY 
+			e.`entry_date` 
 	</select>
 	
 </mapper>

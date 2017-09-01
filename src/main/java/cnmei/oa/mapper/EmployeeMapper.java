@@ -3,6 +3,7 @@ package cnmei.oa.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import cnmei.oa.bean.EmployeeVO;
 import cnmei.oa.pojo.Employee;
 
 public interface EmployeeMapper {
@@ -13,7 +14,7 @@ public interface EmployeeMapper {
 	void deleteEm(String id);
 	List<Employee> findSearch(HashMap<String, Object> params);
 	List<Integer> findRegular(String time);
-	List<Employee> findAllBySort();//按部门
-	List<Employee> findAllByTime();//按入职时间
+	List<EmployeeVO> findAllBySort();//按部门
+	List<EmployeeVO> findAllByTime();//按入职时间
 	Integer findDateCount(String time); //获取当日入职的人数
 }

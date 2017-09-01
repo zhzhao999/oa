@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import cnmei.oa.bean.EmployeeVO;
 import cnmei.oa.bean.SalaryVO;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Log;
@@ -155,7 +156,7 @@ public class EmployeeController extends BaseController{
 		if (eType != null && eType.length() > 0) {
 			String[] split = eType.split(",");
 			List<String> list = Arrays.asList(split);
-			List<Employee> listE = employeeService.findAllBySort(eSort);
+			List<EmployeeVO> listE = employeeService.findAllBySort(eSort);
 			try {
 				ExcelUtils.exportEm(listE, list,request, response);
 			} catch (IOException e) {

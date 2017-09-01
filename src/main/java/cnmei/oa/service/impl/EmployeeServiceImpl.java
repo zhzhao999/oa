@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cnmei.oa.bean.EmployeeVO;
 import cnmei.oa.mapper.EmployeeMapper;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.EmployeeService;
@@ -125,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<Employee> findAllBySort(String sort) {
+	public List<EmployeeVO> findAllBySort(String sort) {
 		if (StringUtils.isNotBlank(sort)) {
 			String[] split = sort.split(",");
 			List<String> list = Arrays.asList(split);

@@ -12,7 +12,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import cnmei.oa.pojo.Employee;
+import cnmei.oa.bean.EmployeeVO;
 
 public class ExcelUtils {
 
@@ -26,7 +26,7 @@ public class ExcelUtils {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("resource")
-	public static void exportEm(List<Employee> all, List<String> exp,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static void exportEm(List<EmployeeVO> all, List<String> exp,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 创建HSSFWorkbook对象(excel的文档对象)
 		HSSFWorkbook wkb = new HSSFWorkbook();
 		// 建立新的sheet对象（excel的表单）
@@ -53,7 +53,7 @@ public class ExcelUtils {
 				row.createCell(j++).setCellValue(all.get(i).getName());
 			}
 			if(exp.contains("性别")){
-				row.createCell(j++).setCellValue(all.get(i).getGender());
+				row.createCell(j++).setCellValue(all.get(i).getGender_name());
 			}
 			if(exp.contains("出生日期")){
 				Date birthday = all.get(i).getBirthday();
@@ -69,7 +69,7 @@ public class ExcelUtils {
 				row.createCell(j++).setCellValue(all.get(i).getCard_id());
 			}
 			if(exp.contains("学历")){
-				row.createCell(j++).setCellValue(all.get(i).getEducation());
+				row.createCell(j++).setCellValue(all.get(i).getEducation_name());
 			}
 			if(exp.contains("毕业院校")){
 				row.createCell(j++).setCellValue(all.get(i).getSchool());
@@ -88,7 +88,7 @@ public class ExcelUtils {
 				j++;
 			}
 			if(exp.contains("部门")){
-				row.createCell(j++).setCellValue(all.get(i).getDepartment());
+				row.createCell(j++).setCellValue(all.get(i).getDepartment_name());
 			}
 			if(exp.contains("职务")){
 				row.createCell(j++).setCellValue(all.get(i).getJob());
