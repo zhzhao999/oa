@@ -1,5 +1,6 @@
 package cnmei.oa.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,21 @@ public class SalaryLevelServiceImpl implements SalaryLevelService {
 	@Override
 	public List<SalaryLevel> findAllType() {
 		return levelMapper.findAllType();
+	}
+
+	@Override
+	public List<SalaryLevel> findSearch(HashMap<String, Object> params) {
+		return levelMapper.findSearch(params);
+	}
+
+	@Override
+	public SalaryLevel findById(String id) {
+		return levelMapper.findById(id);
+	}
+
+	@Override
+	public void updateById(SalaryLevel level) {
+		levelMapper.updateById(level);
 	}
 
 }

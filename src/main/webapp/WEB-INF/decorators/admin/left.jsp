@@ -23,7 +23,7 @@
 								<ul class="list-group">
 									<li><a href="${ctx}/salary/showList" class="list-group-item" id="salary-list">员工薪资表</a></li>
 									<li><a href="${ctx}/salary/dict/postLevel/showList" class="list-group-item" id="salary-post-list">岗位级别</a></li>
-									<li><a href="#" class="list-group-item" id="salary-level-list">职级级别</a></li>
+									<li><a href="${ctx}/salary/dict/level/showList" class="list-group-item" id="salary-level-list">职级级别</a></li>
 								</ul>
 						   </li>
 							<c:if test="${userName eq 'admin' }">

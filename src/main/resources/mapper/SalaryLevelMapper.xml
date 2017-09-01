@@ -5,4 +5,25 @@
 		select id,type_name from t_dict_level
 	</select>
 	
+	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.pojo.SalaryLevel">
+        SELECT 
+        	*
+        FROM 
+        	t_dict_level
+        <where>
+        	<if test="type_name != null and type_name != ''">
+                AND type_name like '%${type_name}%'
+            </if>
+        </where>
+	</select>
+	
+	<select id="findById" resultType="cnmei.oa.pojo.SalaryLevel" >
+		select* from t_dict_level where id = #{id}
+	</select>
+	
+	<update id="updateById" parameterType="cnmei.oa.pojo.SalaryLevel">
+		update t_dict_level set 
+			type_name = #{type_name},basic_pay = #{basic_pay},oil_subsidy = #{oil_subsidy}
+		where id = #{id} 
+	</update>
 </mapper>

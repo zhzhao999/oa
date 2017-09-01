@@ -70,7 +70,7 @@
 	</div>
 </form>
 <script type="text/javascript">
-menu.active('#employee-list');
+menu.active('#salary-post-list');
 
 $(function() {
 	$('#inputForm').validate({
