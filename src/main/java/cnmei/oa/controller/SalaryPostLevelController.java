@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cnmei.oa.bean.ResultBean;
-import cnmei.oa.pojo.SalaryLevel;
 import cnmei.oa.pojo.SalaryPostLevel;
 import cnmei.oa.service.SalaryPostLevelService;
 

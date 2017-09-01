@@ -52,6 +52,7 @@ public class TooltipController extends BaseController{
 	}
 	
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value={"/toolitipList"})
 	@ResponseBody
 	public PageInfo<Tooltip> toolitipList(Model model,String pageNum,String pageSize,String page){

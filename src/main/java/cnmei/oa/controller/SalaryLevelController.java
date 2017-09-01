@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cnmei.oa.bean.ResultBean;
 import cnmei.oa.pojo.SalaryLevel;
-import cnmei.oa.service.LogService;
 import cnmei.oa.service.SalaryLevelService;
-import cnmei.oa.service.SalaryService;
 
 @Controller
 @RequestMapping("/salary/dict/level")

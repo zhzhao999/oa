@@ -3,14 +3,10 @@ package cnmei.oa.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageHelper;
@@ -19,9 +15,7 @@ import com.github.pagehelper.PageInfo;
 import cnmei.oa.bean.ResultBean;
 import cnmei.oa.bean.TreeNode;
 import cnmei.oa.pojo.Dict;
-import cnmei.oa.pojo.Employee;
 import cnmei.oa.service.DictService;
-import cnmei.oa.utils.JsonUtils;
 
 @Controller
 @RequestMapping("/dict")
