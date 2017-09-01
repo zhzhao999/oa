@@ -5,4 +5,28 @@
 		select id,type_name from t_dict_post_level
 	</select>
 	
+	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.pojo.SalaryPostLevel">
+        SELECT 
+        	*
+        FROM 
+        	t_dict_post_level
+        <where>
+        	<if test="type_name != null and type_name != ''">
+                AND type_name like '%${type_name}%'
+            </if>
+        </where>
+	</select>
+	
+	<select id="findById" resultType="cnmei.oa.pojo.SalaryPostLevel" >
+		select* from t_dict_post_level where id = #{id}
+	</select>
+	
+	<update id="updateById" parameterType="cnmei.oa.pojo.SalaryPostLevel">
+		update t_dict_post_level set 
+			type_name = #{type_name},post_salary = #{post_salary},up_ratio = #{up_ratio},
+			merit_pay = #{merit_pay},merit_ratio = #{merit_ratio},full_award = #{full_award},
+			total = #{total}
+		where id = #{id} 
+	</update>
+	
 </mapper>

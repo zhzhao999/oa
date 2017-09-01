@@ -1,5 +1,6 @@
 package cnmei.oa.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,21 @@ public class SalaryPostLevelServiceImpl implements SalaryPostLevelService {
 	@Override
 	public List<SalaryPostLevel> findAllType() {
 		return postLevelMapper.findAllType();
+	}
+
+	@Override
+	public List<SalaryPostLevel> findSearch(HashMap<String, Object> params) {
+		return postLevelMapper.findSearch(params);
+	}
+
+	@Override
+	public SalaryPostLevel findById(String id) {
+		return postLevelMapper.findById(id);
+	}
+
+	@Override
+	public void updateById(SalaryPostLevel level) {
+		postLevelMapper.updateById(level);
 	}
 
 }
