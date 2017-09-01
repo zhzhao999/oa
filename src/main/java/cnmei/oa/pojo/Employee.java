@@ -20,9 +20,6 @@ public class Employee implements Serializable{
 	private String education;
 	private String school;
 	private String major;
-	private String level;//职级
-	private String post_level;//岗位级别
-	private int salary;//新资
 	private Date entry_date;//入职日期
 	private int probation;//试用期
 	private Date regular_date;//转正日期
@@ -116,24 +113,6 @@ public class Employee implements Serializable{
 	}
 	public void setOn_job(int on_job) {
 		this.on_job = on_job;
-	}
-	public String getLevel() {
-		return level;
-	}
-	public void setLevel(String level) {
-		this.level = level;
-	}
-	public String getPost_level() {
-		return post_level;
-	}
-	public void setPost_level(String post_level) {
-		this.post_level = post_level;
-	}
-	public int getSalary() {
-		return salary;
-	}
-	public void setSalary(int salary) {
-		this.salary = salary;
 	}
 	public Date getEntry_date() {
 		return entry_date;

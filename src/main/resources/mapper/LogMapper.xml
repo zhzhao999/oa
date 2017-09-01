@@ -24,6 +24,7 @@
                 AND ope_date &lt;= DATE_FORMAT('${endTime}', '%Y-%m-%d')
             </if>
         </where>
+        ORDER BY id DESC
 	</select>
 	
 </mapper>

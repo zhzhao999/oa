@@ -95,4 +95,31 @@ public class DateUtils {
 		Date parse = formatter.parse(dateString, pos); */
 		return time;
 	}
+	
+	/**
+	 * 计算工龄  （入职日期与当前日期的年份差值）
+	 * @param date 入职日期
+	 * @return age 工龄
+	 */
+	public static int getWorkAge(Date date) {
+		int age = 0;
+		Date currDate=new Date();//获得当前日期
+        Calendar cal=Calendar.getInstance();
+        cal.setTime(currDate);
+        int year = cal.get(Calendar.YEAR);//获得当前年份
+//        int month = cal.get(Calendar.MONTH);//获得当前月份
+        
+        cal.setTime(date);
+        int entryYear = cal.get(Calendar.YEAR);//获得入职年份
+//        int entryMonth = cal.get(Calendar.MONTH);//获得入职月份
+        
+        age = year - entryYear;//得到年差
+        /*int m = month -entryMonth;//得到月差
+        if(m<0){
+        	age = age - 1;
+        	m = 12 + m;
+        }*/
+		return age;
+	}
+	
 }

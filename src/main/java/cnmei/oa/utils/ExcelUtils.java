@@ -93,12 +93,12 @@ public class ExcelUtils {
 			if(exp.contains("职务")){
 				row.createCell(j++).setCellValue(all.get(i).getJob());
 			}
-			if(exp.contains("职级")){
+			/*if(exp.contains("职级")){
 				row.createCell(j++).setCellValue(all.get(i).getLevel());
 			}
 			if(exp.contains("新资")){
 				row.createCell(j++).setCellValue(all.get(i).getSalary());
-			}
+			}*/
 			if(exp.contains("手机")){
 				row.createCell(j++).setCellValue(all.get(i).getTelephone());
 			}

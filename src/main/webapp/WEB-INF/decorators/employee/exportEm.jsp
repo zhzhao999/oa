@@ -61,7 +61,7 @@
 			<label class="col-sm-2 control-label"> 
 				<input name="eType" type="checkbox" value="部门" />部门
 			</label> 
-			<label class="col-sm-2 control-label"> 
+			<!-- <label class="col-sm-2 control-label"> 
 				<input name="eType" type="checkbox" value="职务" />职务
 			</label> 
 			<label class="col-sm-2 control-label"> 
@@ -69,7 +69,7 @@
 			</label> 
 			<label class="col-sm-2 control-label"> 
 				<input name="eType" type="checkbox" value="新资" />新资
-			</label>
+			</label> -->
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-2 control-label"></label>

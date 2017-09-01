@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cnmei.oa.mapper.SalaryMapper">
+	<insert id="addSalary" parameterType="cnmei.oa.pojo.Salary" >
+		insert into t_salary
+			(employee_id,level,post_level,
+			other,total)
+        values 
+        	(#{employee_id},#{level},#{post_level},
+        	#{other},#{total})
+	</insert>
+	
+	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.bean.SalaryVO">
+        SELECT 
+        	e.`ee_id`,e.`name`,e.`entry_date`,
+        	l.`type_name` AS l_name,l.`basic_pay`,l.`oil_subsidy`,
+        	p.`type_name` AS p_name,p.`post_salary`,p.`merit_pay`,p.`full_award`,
+        	s.`other`,s.`total` 
+        FROM 
+        	t_salary s,t_employee e,t_dict_level l,t_dict_post_level p 
+        <where>
+        	s.`employee_id` = e.`id` AND s.`level` = l.`id` AND s.`post_level`= p.id AND e.`on_job` = 1
+        	<if test="name != null and name != ''">
+                AND name like '%${name}%'
+            </if>
+        </where>
+	</select>
+</mapper>

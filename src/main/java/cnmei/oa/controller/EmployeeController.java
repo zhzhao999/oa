@@ -21,8 +21,10 @@ import com.github.pagehelper.PageInfo;
 
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Log;
+import cnmei.oa.pojo.Salary;
 import cnmei.oa.service.EmployeeService;
 import cnmei.oa.service.LogService;
+import cnmei.oa.service.SalaryService;
 import cnmei.oa.utils.ExcelUtils;
 
 @Controller
@@ -33,6 +35,8 @@ public class EmployeeController extends BaseController{
 	private EmployeeService employeeService;
 	@Autowired 
 	private LogService logService;
+	@Autowired
+	private SalaryService salaryService;
 	
 	@RequestMapping("/showAddEm")
 	public String showAddEm(){
@@ -40,10 +44,16 @@ public class EmployeeController extends BaseController{
 	}
 	
 	@RequestMapping(value="/saveEmployee")
-	public String saveEmployee(Employee em,HttpServletRequest request){
+	public String saveEmployee(Employee em,String level,String post_level,HttpServletRequest request){
 		//添加员工
 		employeeService.addEmployee(em);
 		//写日志
+		Salary salary = new Salary();
+		salary.setEmployee_id(em.getId());
+		salary.setLevel(level);
+		salary.setPost_level(post_level);
+		salaryService.addSalary(salary);
+		
 		Log log = new Log();
 		log.setUser_name(getCurrentUser(request).getName());
 		log.setOpe_module("员工模块");

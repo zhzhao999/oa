@@ -19,6 +19,13 @@
 									<li><a href="${ctx}/employee/showExport" class="list-group-item" id="employee-export">员工信息导出</a></li>
 								</ul>
 						   </li>
+							<li><a id=""><span></span> 薪资管理</a>
+								<ul class="list-group">
+									<li><a href="${ctx}/salary/showList" class="list-group-item" id="salary-list">员工薪资表</a></li>
+									<li><a href="#" class="list-group-item" id="salary-post-list">岗位级别</a></li>
+									<li><a href="#" class="list-group-item" id="salary-level-list">职级级别</a></li>
+								</ul>
+						   </li>
 							<c:if test="${userName eq 'admin' }">
 								<li><a id=""><span></span> 用户管理</a>
 									<ul class="list-group">

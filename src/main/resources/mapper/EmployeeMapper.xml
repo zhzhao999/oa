@@ -7,13 +7,12 @@
 		<result column="password" property="password" jdbcType="VARCHAR" />
 	</resultMap> -->
 
-	<insert id="addEmployee" parameterType="cnmei.oa.pojo.Employee">
+	<insert id="addEmployee" useGeneratedKeys="true" keyProperty="id" parameterType="cnmei.oa.pojo.Employee">
 		insert into t_employee
 			(ee_id,name,gender,nation,
 			birthday,zodiac,card_id,
 			telephone,qq,email,
 			education,school,major,
-			level,post_level,salary,
 			entry_date,probation,regular_date,
 			contract_year,contract_end_date,
 			center,department,job,on_job)
@@ -22,7 +21,6 @@
         	#{birthday},#{zodiac},#{card_id},
         	#{telephone},#{qq},#{email},
         	#{education},#{school},#{major},
-        	#{level},#{post_level},#{salary},
         	#{entry_date},#{probation},#{regular_date},
         	#{contract_year},#{contract_end_date},
         	#{center},#{department},#{job},#{on_job})
@@ -43,7 +41,6 @@
 			birthday = #{birthday}, zodiac = #{zodiac},card_id = #{card_id},
         	telephone = #{telephone}, qq = #{qq},email = #{email},
         	education = #{education}, school = #{school}, major = #{major},
-        	level = #{level}, post_level = #{post_level},salary = #{salary},
         	entry_date= #{entry_date},probation=  #{probation},regular_date = #{regular_date},
         	contract_year= #{contract_year},contract_end_date = #{contract_end_date},
         	center= #{center},department= #{department},job = #{job}
