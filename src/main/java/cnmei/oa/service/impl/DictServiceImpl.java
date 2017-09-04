@@ -45,5 +45,10 @@ public class DictServiceImpl implements DictService {
 		dictMapper.updateById(params);
 	}
 
+	@Override
+	public List<Dict> getAllDepartment() {
+		return dictMapper.getAllDepartment();
+	}
+
 	
 }

@@ -10,4 +10,5 @@ public interface DictService {
 	List<Dict> findAllType();
 	List<Dict> findAll();
 	void updateById(HashMap<String, Object> params);
+	List<Dict> getAllDepartment();
 }

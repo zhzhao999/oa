@@ -52,7 +52,10 @@
                       <h4 class="modal-title" id="dictModalLabel">修改字典项</h4>
                  </div>
                   <div class="modal-body">
-  
+  					<div class="form-group">
+                         <label for="txt_departmentname">父节点</label>
+                         <select  name="parentId" class="form-control" id="parentId" disabled="disabled"></select>
+                     </div>
                      <div class="form-group">
                          <label for="txt_departmentname">字段名称</label>
                          <input type="text" name="item_name" class="form-control" id="item_name" placeholder="">
@@ -137,6 +140,7 @@ $('#mod-dic-btn').click(function() {
 	if (node) {
 		common.log(node);
 		if (node.pId == 22 || node.pId == 23) {
+			$('#parentId').attr("disabled",true); 
 			$('#item_code').attr("disabled",false); 
 			$('#item_name').val(node.name);
 			$('#item_code').val(node.item_code); 
@@ -144,9 +148,16 @@ $('#mod-dic-btn').click(function() {
 			$('#item_code').attr("disabled",true); 
 			$('#item_name').val(node.name);
 			$('#item_code').val(node.item_code);
+			if (node.level == 2) { //第三级目录需要显示Selector
+				$('#parentId').attr("disabled",false); 
+				common.log(node);
+				getDepartment(node.pId);
+			}else{
+				$('#parentId').attr("disabled",true); 
+			}
 		}
 		$('#updateDicModel').modal();
-		update(node.id);
+		update(node);
 	}else{
 		alert("请先选择要操作的节点")
 	}
@@ -167,21 +178,48 @@ $('#del-dic-btn').click(function() {
 	}
 });
 
+//获取所有部门，并给Selector赋值
+function getDepartment(pId) {
+	$.ajax({
+        url: '${ctx }/dict/getAllDepartment',
+        type: 'POST',
+        dataType: 'json',
+        data: { },
+        success: function (data) {
+        	if (data.code == 1) {
+        		var list = data.data;
+        		$("#parentId").empty();
+        		for (var i = 0; i < list.length; i++) {
+        			if (list[i].id == pId) {
+        				$("#parentId").append("<option selected value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+        			}else{
+        				$("#parentId").append("<option value='"+list[i].id+"'>"+list[i].item_name+"</option>");
+        			}
+        		}
+			}else{
+				alert("获取部门名称失败，请稍后再试");
+			}
+        }
+    });
+}
+
 // 更新字典
-function update(id) {
+function update(node) {
 	
 	var itemName = "";
 	var itemCode = "";
+	var parentId = "";
 	$('#btn_update').on('click',function(){
 		itemName = $('#item_name').val();
 		itemCode = $('#item_code').val();
-		
+		parentId = $('#parentId').val();
 		$.ajax({
 	        url: '${ctx }/dict/update',
 	        type: 'POST',
 	        dataType: 'json',
 	        data: {
-	        	id: id,
+	        	id: node.id,
+	        	parentId:parentId,
 	        	item_name: itemName,
 	        	item_code: itemCode,
 	        },

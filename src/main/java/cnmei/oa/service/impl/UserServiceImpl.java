@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,13 @@ public class UserServiceImpl implements UserService {
 	public boolean login(User user,HttpServletRequest request) {
 		
 		String pwd = user.getPassword();
-		String md5 = MD5Utils.md5(pwd);
-		user.setPassword(md5);
+		if (StringUtils.isNoneBlank(pwd)) {
+			String md5 = MD5Utils.md5(pwd);
+			user.setPassword(md5);
+		}else{
+			return false;
+		}
+		
 		User u = userMapper.findOne(user);
 		if (u != null) {
 			HttpSession session = request.getSession();

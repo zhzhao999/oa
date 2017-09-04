@@ -71,14 +71,28 @@ public class DictController extends BaseController{
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public ResultBean updateById(int id,String item_name,int item_code) {
+	public ResultBean updateById(int id,String parentId,String item_name,int item_code) {
 		HashMap<String, Object> params = new HashMap<String,Object>();
 		params.put("id", id);
+		params.put("parentId", parentId);
 		params.put("itemName", item_name);
 		params.put("itemCode", item_code);
 		try {
 			dictService.updateById(params);
 			return ResultBean.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultBean.build(0, e.getMessage());
+		}
+	}
+	
+	@RequestMapping("getAllDepartment")
+	@ResponseBody
+	public ResultBean getAllDepartment() {
+		
+		try {
+			List<Dict> list = dictService.getAllDepartment();
+			return ResultBean.build(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResultBean.build(0, e.getMessage());

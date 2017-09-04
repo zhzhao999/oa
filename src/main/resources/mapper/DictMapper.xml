@@ -14,8 +14,18 @@
 	</select>
 	
 	<update id="updateById" parameterType="java.util.HashMap">
-		update t_dict set 
+		update 
+			t_dict 
+		set 
+			<if test="parentId != null and parentId != ''">
+                parent_id = #{parentId},
+            </if>
 			item_name = #{itemName},item_code = #{itemCode}
-		where id = #{id} 
+		where 
+			id = #{id} 
 	</update>
+	
+	<select id="getAllDepartment" resultType="cnmei.oa.pojo.Dict">
+		SELECT * FROM t_dict where parent_id = 26 and enable = 1 ORDER BY sort asc 
+	</select>
 </mapper>
