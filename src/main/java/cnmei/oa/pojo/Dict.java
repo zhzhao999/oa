@@ -9,7 +9,7 @@ public class Dict implements Serializable {
 	private int id;
 	private String type_code;
 	private String type_name;
-	private String item_code;
+	private int item_code;
 	private String item_name;
 	private String sort;
 	private String enable;
@@ -33,10 +33,10 @@ public class Dict implements Serializable {
 	public void setType_name(String type_name) {
 		this.type_name = type_name;
 	}
-	public String getItem_code() {
+	public int getItem_code() {
 		return item_code;
 	}
-	public void setItem_code(String item_code) {
+	public void setItem_code(int item_code) {
 		this.item_code = item_code;
 	}
 	public String getItem_name() {

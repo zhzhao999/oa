@@ -1,5 +1,6 @@
 package cnmei.oa.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class DictServiceImpl implements DictService {
 	public List<Dict> findAll() {
 		List<Dict> typeList = dictMapper.findAll();
 		return typeList;
+	}
+
+	@Override
+	public void updateById(HashMap<String, Object> params) {
+		dictMapper.updateById(params);
 	}
 
 	

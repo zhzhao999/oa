@@ -13,4 +13,9 @@
 		SELECT * FROM t_dict where enable = 1 ORDER BY type_code desc 
 	</select>
 	
+	<update id="updateById" parameterType="java.util.HashMap">
+		update t_dict set 
+			item_name = #{itemName},item_code = #{itemCode}
+		where id = #{id} 
+	</update>
 </mapper>

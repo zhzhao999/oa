@@ -1,6 +1,7 @@
 package cnmei.oa.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +56,6 @@ public class DictController extends BaseController{
 		return pageInfo;
 	}
 	
-	@RequestMapping("/showTree")
-	public String showTree(){
-		return "decorators/system/dict2";
-	}
-	
 	@RequestMapping("/tree")
 	@ResponseBody
 	public ArrayList<TreeNode> findTree() {
@@ -67,9 +63,25 @@ public class DictController extends BaseController{
 		List<Dict> list = dictService.findAll();
 		/*reList.add(new TreeNode(0,null,"字典管理"));*/
 		for (Dict dict : list) {
-			TreeNode treeNode = new TreeNode(dict.getId(),dict.getParent_id(),dict.getItem_name());
+			TreeNode treeNode = new TreeNode(dict.getId(),dict.getParent_id(),dict.getItem_name(),dict.getItem_code());
 			reList.add(treeNode);
 		}
 		return reList;
+	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public ResultBean updateById(int id,String item_name,int item_code) {
+		HashMap<String, Object> params = new HashMap<String,Object>();
+		params.put("id", id);
+		params.put("itemName", item_name);
+		params.put("itemCode", item_code);
+		try {
+			dictService.updateById(params);
+			return ResultBean.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultBean.build(0, e.getMessage());
+		}
 	}
 }
