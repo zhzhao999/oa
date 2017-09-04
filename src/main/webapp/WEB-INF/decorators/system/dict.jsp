@@ -181,8 +181,8 @@ $('#del-dic-btn').click(function() {
 //获取所有部门，并给Selector赋值
 function getDepartment(pId) {
 	$.ajax({
-        url: '${ctx }/dict/getAllDepartment',
-        type: 'POST',
+        url: '${ctx }/dict/getAllDepartment_',
+        type: 'GET',
         dataType: 'json',
         data: { },
         success: function (data) {

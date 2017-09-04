@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>用户管理</title>
+    <title>提醒信息</title>
     <link href="${ctx }/static/legacy/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 	<link href="${ctx }/css/pager.css" rel="stylesheet" type="text/css">
     <script src="${ctx }/static/legacy/My97DatePicker/WdatePicker.js" type="text/javascript"></script>

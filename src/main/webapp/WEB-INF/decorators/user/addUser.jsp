@@ -2,7 +2,9 @@
 <%@ include file="/WEB-INF/jsp/common/jslib.jsp"%>
 <script src="${ctx }/static/legacy/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 <link href="${ctx }/static/legacy/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
-
+<head>
+    <title>用户管理</title>
+</head>
 <div class="modal-header">
 	<h4 class="modal-title" >用户信息添加</h4>
 </div>

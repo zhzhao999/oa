@@ -86,7 +86,7 @@ public class DictController extends BaseController{
 		}
 	}
 	
-	@RequestMapping("getAllDepartment")
+	@RequestMapping("getAllDepartment_")
 	@ResponseBody
 	public ResultBean getAllDepartment() {
 		

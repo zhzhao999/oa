@@ -9,7 +9,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
-<title><decorator:title default="采媒在线"/></title>
+<title><decorator:title default="人资档案系统"/></title>
 
 <script src="${ctx}/static/legacy/js/main.js" type="text/javascript"></script>
 <script src="${ctx}/static/legacy/js/custom.js" type="text/javascript"></script><!-- 自定义：包含全选/取消全选脚本 -->

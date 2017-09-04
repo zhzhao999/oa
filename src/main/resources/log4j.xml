@@ -37,7 +37,7 @@
         <appender-ref ref="fileout" />
     </logger>
     <logger name="org.springframework" additivity="false">
-        <level value ="warn"/>
+        <level value ="DEBUG"/>
         <appender-ref ref="stdout" />
         <appender-ref ref="fileout" />
     </logger>
