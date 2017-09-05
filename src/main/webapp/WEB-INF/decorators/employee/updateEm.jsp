@@ -20,29 +20,34 @@
 		<p class="alert alert-danger hide"></p>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>姓名:</label>
-			<div class="col-sm-6 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="name" value="${em.name }" /> 
 			</div>
-		</div>
-		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label">性别:</label>
+			<label class="col-sm-2 control-label">性别:</label>
 			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="gender" id="gender"></select>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
+		</div>
+		<div class="form-group form-group-sm">
+			<label class="col-sm-3 control-label"><font color="red">*</font>民族:</label>
 			<div class="col-sm-2 has-feedback"> 
 				<input type="text" class="form-control" name="nation" value="${em.nation }"/>
+			</div>
+			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
+			<div class="col-sm-2 has-feedback">
+				<input type="text" class="form-control" name="card_id" value="${em.card_id}"/> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>出生日期:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control Wdate" name="birthday" onFocus="WdatePicker({lang:'zh-cn'})"
+				<input type="text" class="form-control Wdate" name="birthday" 
+				onFocus="WdatePicker({lang:'zh-cn',onpicked:function() {javascript:getZodiac(this.value);}})"
 				value="<fmt:formatDate value="${em.birthday }" pattern="yyyy-MM-dd"/>"/> 
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>生肖:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="card_id" value="${em.card_id}"/> 
+				<input type="text" class="form-control" name="zodiac" id="zodiac" readonly="readonly" value="${em.zodiac}"/> 
 			</div>
 		</div>
 		
@@ -119,15 +124,13 @@
 		</div>
  		<div class="form-group form-group-sm">
  		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
-			<div class="col-sm-6 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="post_level" id="post_level"></select>
 			</div>
-			<%--
-			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>薪资其他:</label>
 			<div class="col-sm-2 has-feedback">
-				 <input type="text" class="form-control" name="salary" value="${em.salary}"/>  
+				 <input type="text" class="form-control" name="other" value="${salary.other}"/>  
 			</div>
-			--%>
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -139,6 +142,13 @@
 </form>
 <script type="text/javascript">
 menu.active('#employee-list');
+//动态获取生肖
+function getZodiac(val){
+	var url = "${ctx}/employee/getZodiac"
+	$.post(url,{birthday:val},function(data){
+		$("#zodiac").val(data.data)
+	});
+}
 
 $(function() {
 	$('#inputForm').validate({
@@ -197,8 +207,9 @@ $(function() {
 			post_level: {
 				required: true
 			},
-			salary: {
-				required: true
+			other: {
+				required: true,
+				number:true
 			}
 		},
 		messages: {
@@ -256,8 +267,9 @@ $(function() {
 			post_level: {
 				required: '岗位级别不能为空'
 			},
-			salary: {
-				required: '新资不能为空'
+			other: {
+				required: '薪资其他不能为空',
+				number: '新资只能是数字'
 			}
 		}
 	});

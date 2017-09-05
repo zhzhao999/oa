@@ -66,8 +66,9 @@ public class SalaryServiceImpl implements SalaryService {
 		int award = vo.getFull_award();//满勤奖
 		int bPay = vo.getBasic_pay();//职级对应工资
 		int oSubsidy = vo.getOil_subsidy();//油补
+		int age_salary = vo.getWork_age_salary(); //工龄工资
 		int other = vo.getOther();//其他
-		vo.setTotal(pSalary + mPay + award + bPay + oSubsidy + other);
+		vo.setTotal(pSalary + mPay + award + bPay + oSubsidy + age_salary + other);
 		return vo;
 	}
 

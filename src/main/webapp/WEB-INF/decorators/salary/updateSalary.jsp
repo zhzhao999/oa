@@ -43,7 +43,7 @@
 			</div>
 		</div>
  		<div class="form-group form-group-sm">
- 			<label class="col-sm-3 control-label"><font color="red"></font>薪资其他:</label>
+ 			<label class="col-sm-3 control-label"><font color="red">*</font>薪资其他:</label>
 			<div class="col-sm-6 has-feedback">
 				<input type="text" class="form-control" name="other" value="${salary.other }" /> 
 			</div>
@@ -67,6 +67,10 @@ $(function() {
 			},
 			post_level: {
 				required: true
+			},
+			other: {
+				required: true,
+				number:true
 			}
 		},
 		messages: {
@@ -75,6 +79,10 @@ $(function() {
 			},
 			post_level: {
 				required: '岗位级别不能为空'
+			},
+			other:{
+				required: '薪资其他不能为空',
+				number:'薪资只能是数字'
 			}
 		}
 	});

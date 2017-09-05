@@ -136,7 +136,7 @@
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" id="post_level" >${salary.p_name } </font>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red"></font>薪资其他:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>薪资其他:</label>
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${salary.other } </font>
 			</div>

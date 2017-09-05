@@ -120,7 +120,7 @@ public class EmployeeController extends BaseController{
 	}
 	
 	@RequestMapping(value="/updateEm",method=RequestMethod.POST)
-	public String updateEm(Employee em,String level,String post_level,HttpServletRequest request){
+	public String updateEm(Employee em,String level,String post_level,int other,HttpServletRequest request){
 		//修改员工基本信息
 		employeeService.updateEm(em);
 		//修改员工薪资
@@ -128,6 +128,7 @@ public class EmployeeController extends BaseController{
 		salary.setEmployee_id(em.getId());
 		salary.setLevel(level);
 		salary.setPost_level(post_level);
+		salary.setOther(other);
 		salaryService.updateSalary(salary);
 		//写日志
 		Log log = new Log();
