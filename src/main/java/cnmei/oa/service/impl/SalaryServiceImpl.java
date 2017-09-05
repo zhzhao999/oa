@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cnmei.oa.bean.SalaryVO;
+import cnmei.oa.bean.SalaryVO2;
 import cnmei.oa.mapper.SalaryMapper;
 import cnmei.oa.pojo.Salary;
 import cnmei.oa.service.SalaryService;
@@ -40,6 +41,12 @@ public class SalaryServiceImpl implements SalaryService {
 		return salary;
 	}
 	
+	@Override
+	public SalaryVO2 findSalary2ByEId(String eId) {
+		SalaryVO2 salary = salaryMapper.findSalary2ByEId(eId);
+		return salary;
+	}
+	
 	/**
 	 * 计算工龄 和 新资合计
 	 * @param vo
@@ -51,6 +58,7 @@ public class SalaryServiceImpl implements SalaryService {
 		if (entry_date != null) {
 			int age = DateUtils.getWorkAge(entry_date);
 			vo.setWork_age(age);
+			vo.setWork_age_salay(age*100);//工龄工资 =工龄*100
 		}
 		//新资合计
 		int pSalary = vo.getPost_salary();//岗位工资

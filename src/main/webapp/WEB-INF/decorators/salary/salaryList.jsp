@@ -55,9 +55,10 @@
 			            <th>岗位工资</th>
 			            <th>绩效工资</th>
 		                <th>满勤奖</th>
-		                <th>工龄</th>
+		                <th>工龄工资</th>
 		                <th>其他</th>
 		                <th>共计</th>
+		                <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody id="contList">
@@ -138,9 +139,14 @@ menu.active('#salary-list');
 	            	'<td>' + data[i].post_salary + '</td>' +
 	            	'<td>' + data[i].merit_pay + '</td>' +
 	            	'<td>' + data[i].full_award + '</td>' +
-	            	'<td>' + data[i].work_age + '</td>' +
+	            	'<td>' + data[i].work_age_salary + '</td>' +
 	            	'<td>' + data[i].other + '</td>' +
 	            	'<td>' + data[i].total + '</td>' +
+	            	'<td>' +
+	            		'<div class="btn-group" role="group" aria-label="...">' +
+	            			'<a id="look" href="${ctx }/salary/showUpdate/' + data[i].id + '" class="btn btn-default btn-sm">修改</a>' +
+	            		'</div>' +
+        			'</td>'+ 
 	            	'</tr>';
 	        }
 	        return html;

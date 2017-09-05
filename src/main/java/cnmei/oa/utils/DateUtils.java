@@ -107,18 +107,19 @@ public class DateUtils {
         Calendar cal=Calendar.getInstance();
         cal.setTime(currDate);
         int year = cal.get(Calendar.YEAR);//获得当前年份
-//        int month = cal.get(Calendar.MONTH);//获得当前月份
+        int month = cal.get(Calendar.MONTH);//获得当前月份
         
         cal.setTime(date);
         int entryYear = cal.get(Calendar.YEAR);//获得入职年份
-//        int entryMonth = cal.get(Calendar.MONTH);//获得入职月份
+        int entryMonth = cal.get(Calendar.MONTH);//获得入职月份
         
         age = year - entryYear;//得到年差
-        /*int m = month -entryMonth;//得到月差
+        int m = month -entryMonth;//得到月差
         if(m<0){
         	age = age - 1;
         	m = 12 + m;
-        }*/
+        }
+//        System.out.println("入职时长：" + age +"年零"+ m + "个月");
 		return age;
 	}
 	

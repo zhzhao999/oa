@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -12,6 +14,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import cnmei.oa.bean.SalaryVO;
+import cnmei.oa.bean.SalaryVO2;
+import cnmei.oa.pojo.Salary;
 import cnmei.oa.service.SalaryService;
 
 @Controller
@@ -47,6 +51,17 @@ public class SalaryController extends BaseController{
 		return pageInfo;
 	}
 	
+	@RequestMapping(value="/showUpdate/{id}")
+	public String showUpdate(Model model,@PathVariable String id){
+		SalaryVO2 salary = salaryService.findSalary2ByEId(id);
+		model.addAttribute("salary", salary);
+		return "decorators/salary/updateSalary";
+	}
 	
+	@RequestMapping(value="/updateSalary")
+	public String updateSalary(Salary salary){
+		salaryService.updateSalary(salary);
+		return "decorators/salary/salaryList";
+	}
 	
 }

@@ -12,7 +12,7 @@
 	
 	<select id="findSearch" parameterType="java.util.HashMap" resultType="cnmei.oa.bean.SalaryVO">
         SELECT 
-        	e.`ee_id`,e.`name`,e.`entry_date`,
+        	e.`id`,e.`ee_id`,e.`name`,e.`entry_date`,
         	l.`type_name` AS l_name,l.`basic_pay`,l.`oil_subsidy`,
         	p.`type_name` AS p_name,p.`post_salary`,p.`merit_pay`,p.`full_award`,
         	s.`other`,s.`total` 
@@ -28,7 +28,7 @@
 	
 	<select id="findSalaryByEId" parameterType="String" resultType="cnmei.oa.bean.SalaryVO">
         SELECT 
-        	e.`ee_id`,e.`name`,e.`entry_date`,
+        	e.`id`,e.`ee_id`,e.`name`,e.`entry_date`,
         	l.`type_name` AS l_name,l.`basic_pay`,l.`oil_subsidy`,
         	p.`type_name` AS p_name,p.`post_salary`,p.`merit_pay`,p.`full_award`,
         	s.`other`,s.`total` 
@@ -38,6 +38,15 @@
         	s.`employee_id` = e.`id` AND s.`level` = l.`id` AND s.`post_level`= p.id AND e.`on_job` = 1
         	and e.`id` = #{id}
         </where>
+	</select>
+	
+	<select id="findSalary2ByEId" parameterType="String" resultType="cnmei.oa.bean.SalaryVO2">
+        SELECT 
+        	e.`ee_id`,e.`name`,s.*
+		FROM 
+        	t_salary s,t_employee e
+		WHERE
+			s.`employee_id` = e.`id` AND e.`id` = #{id}
 	</select>
 	
 	<select id="findByEId" parameterType="String" resultType="cnmei.oa.pojo.Salary">

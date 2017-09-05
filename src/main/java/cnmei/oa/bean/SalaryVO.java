@@ -9,7 +9,7 @@ import java.util.Date;
 public class SalaryVO implements Serializable{
 
 	private static final long serialVersionUID = -4239515504547326946L;
-	
+	private int id; //员工ID
 	private String ee_id;//员工编号
 	private String name;//员工姓名
 	private Date entry_date;//入职日期
@@ -21,6 +21,7 @@ public class SalaryVO implements Serializable{
 	private int merit_pay;//绩效工资
 	private int full_award;//满勤奖
 	private int work_age;//工龄
+	private int work_age_salary;//工龄工资
 	private int other;//其他
 	private int total;//共计
 	public String getEe_id() {
@@ -100,6 +101,18 @@ public class SalaryVO implements Serializable{
 	}
 	public void setWork_age(int work_age) {
 		this.work_age = work_age;
+	}
+	public int getWork_age_salary() {
+		return work_age_salary;
+	}
+	public void setWork_age_salay(int work_age_salary) {
+		this.work_age_salary = work_age_salary;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
