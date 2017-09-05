@@ -42,24 +42,28 @@
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control"><fmt:formatDate value="${em.birthday }" pattern="yyyy-MM-dd"/></font>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>生肖:</label>
 			<div class="col-sm-2 has-feedback">
-				<font class="form-control" >${em.card_id}</font>
+				<font class="form-control" >${em.zodiac}</font>
 			</div>
 		</div>
 		
 		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>学历:</label>
-			<div class="col-sm-6 has-feedback">
+			<label class="col-sm-3 control-label"><font color="red">*</font>身份证号:</label>
+			<div class="col-sm-2 has-feedback">
+				<font class="form-control" >${em.card_id}</font>
+			</div>
+			<label class="col-sm-2 control-label"><font color="red">*</font>学历:</label>
+			<div class="col-sm-2 has-feedback">
 				<font class="form-control" id="education" ></font>
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>毕业院校:</label>
-			<div class="col-sm-3 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.school }</font>
 			</div>
-			<label class="col-sm-1 control-label"><font color="red">*</font>专业:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>专业:</label>
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" >${em.major }</font>
 			</div>
@@ -132,8 +136,14 @@
 			<div class="col-sm-2 has-feedback">
 				<font class="form-control" id="post_level" >${salary.p_name } </font>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<label class="col-sm-2 control-label"><font color="red"></font>薪资其他:</label>
 			<div class="col-sm-2 has-feedback">
+				<font class="form-control" >${salary.other } </font>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<label class="col-sm-3 control-label"><font color="red">*</font>税前薪资:</label>
+			<div class="col-sm-6 has-feedback">
 				<font class="form-control" >${salary.total } </font>
 			</div>
 		</div>

@@ -20,31 +20,36 @@
 		<p class="alert alert-danger hide"></p>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>姓名:</label>
-			<div class="col-sm-6 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<input type="text" class="form-control" name="name" id="name"/> 
 			</div>
-		</div>
-		<div class="form-group form-group-sm">
-			<label class="col-sm-3 control-label"><font color="red">*</font>性别:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>性别:</label>
 			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="gender" id="gender">
 					<!-- <option value="男">男</option>
 					<option value="女">女</option> -->
 				</select>
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>民族:</label>
+		</div>
+		<div class="form-group form-group-sm">
+			<label class="col-sm-3 control-label"><font color="red">*</font>民族:</label>
 			<div class="col-sm-2 has-feedback"> 
 				<input type="text" class="form-control" name="nation" id="nation"/>
+			</div>
+			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
+			<div class="col-sm-2 has-feedback">
+				<input type="text" class="form-control" name="card_id" id="card_id" /> 
 			</div>
 		</div>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>出生日期:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control Wdate" name="birthday" id="birthday" onFocus="WdatePicker({lang:'zh-cn'})"/> 
+				<input type="text" class="form-control Wdate" name="birthday" id="birthday" 
+				onFocus="WdatePicker({lang:'zh-cn',onpicked:function() {javascript:getZodiac(this.value);}})"/> 
 			</div>
-			<label class="col-sm-2 control-label"><font color="red">*</font>身份证号:</label>
+			<label class="col-sm-2 control-label"><font color="red">*</font>生肖:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="card_id" id="card_id" /> 
+				<input type="text" class="form-control" name="zodiac" id="zodiac" readonly="readonly"/> 
 			</div>
 		</div>
 		
@@ -127,13 +132,13 @@
 		</div>
  		<div class="form-group form-group-sm">
  		<label class="col-sm-3 control-label"><font color="red">*</font>岗位级别:</label>
-			<div class="col-sm-6 has-feedback">
+			<div class="col-sm-2 has-feedback">
 				<select class="form-control" name="post_level" id="post_level"></select>
 			</div>
-			<!-- <label class="col-sm-2 control-label"><font color="red">*</font>税前新资:</label>
+			<label class="col-sm-2 control-label"><font color="red"></font>薪资其他:</label>
 			<div class="col-sm-2 has-feedback">
-				<input type="text" class="form-control" name="salary" id="salary"/> 
-			</div> -->
+				<input type="text" class="form-control" name="other" id="other"/> 
+			</div>
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -145,7 +150,15 @@
 </form>
 
 <script type="text/javascript">
+//设置左侧菜单选中
 menu.active('#employee-add');
+//动态获取生肖
+function getZodiac(val){
+	var url = "${ctx}/employee/getZodiac"
+	$.post(url,{birthday:val},function(data){
+		$("#zodiac").val(data.data)
+	});
+}
 $(function() {
 	$('#inputForm').validate({
 		rules: {

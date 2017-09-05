@@ -2,6 +2,7 @@ package cnmei.oa.controller;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import cnmei.oa.bean.EmployeeVO;
+import cnmei.oa.bean.ResultBean;
 import cnmei.oa.bean.SalaryVO;
 import cnmei.oa.pojo.Employee;
 import cnmei.oa.pojo.Log;
@@ -28,6 +30,7 @@ import cnmei.oa.service.EmployeeService;
 import cnmei.oa.service.LogService;
 import cnmei.oa.service.SalaryService;
 import cnmei.oa.utils.ExcelUtils;
+import cnmei.oa.utils.ZodiacUtils;
 
 @Controller
 @RequestMapping("/employee")
@@ -46,7 +49,7 @@ public class EmployeeController extends BaseController{
 	}
 	
 	@RequestMapping(value="/saveEmployee")
-	public String saveEmployee(Employee em,String level,String post_level,HttpServletRequest request){
+	public String saveEmployee(Employee em,String level,String post_level,int other,HttpServletRequest request){
 		//添加员工
 		employeeService.addEmployee(em);
 		//添加员工薪资
@@ -54,6 +57,7 @@ public class EmployeeController extends BaseController{
 		salary.setEmployee_id(em.getId());
 		salary.setLevel(level);
 		salary.setPost_level(post_level);
+		salary.setOther(other);
 		salaryService.addSalary(salary);
 		//写日志
 		Log log = new Log();
@@ -170,5 +174,12 @@ public class EmployeeController extends BaseController{
 		}
 		model.addAttribute("msg", "数据导出成功");
 		model.addAttribute("errorMsg", "");
+	}
+	
+	@RequestMapping("/getZodiac")
+	@ResponseBody
+	public ResultBean getZodiac(Date birthday){
+		String zodiac = ZodiacUtils.getZodiac(birthday);
+		return ResultBean.build(zodiac);
 	}
 }
