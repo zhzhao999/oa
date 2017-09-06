@@ -14,6 +14,7 @@ public interface EmployeeMapper {
 	void deleteEm(String id);
 	List<Employee> findSearch(HashMap<String, Object> params);
 	List<Integer> findRegular(String time);
+	List<Integer> findContract(String time);
 	List<EmployeeVO> findAllBySort();//按部门
 	List<EmployeeVO> findAllByTime();//按入职时间
 	Integer findDateCount(String time); //获取当日入职的人数

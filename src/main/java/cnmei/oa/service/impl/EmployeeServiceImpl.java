@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 
 import cnmei.oa.bean.EmployeeVO;
 import cnmei.oa.mapper.EmployeeMapper;
+import cnmei.oa.mapper.TooltipMapper;
 import cnmei.oa.pojo.Employee;
+import cnmei.oa.pojo.Tooltip;
 import cnmei.oa.service.EmployeeService;
+import cnmei.oa.service.TooltipService;
 import cnmei.oa.utils.DateUtils;
 import cnmei.oa.utils.ZodiacUtils;
 
@@ -22,6 +25,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	private EmployeeMapper employeeMapper;
+	@Autowired
+	private TooltipService tooltipService;
 	
 	@Override
 	public void addEmployee(Employee em) {
@@ -118,6 +123,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void deleteEm(String id){
 		employeeMapper.deleteEm(id);
+		tooltipService.deleteTipByEId(id);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/common/jslib.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +13,18 @@
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/htmleaf-demo.css">
 	
 	<link href="${ctx}/static/legacy/css/login.css" rel="stylesheet" />
+	<script type="text/javascript">
+		$(function(){
+			 if (window.history && window.history.pushState) {
+			        $(window).on('popstate', function () {
+			            window.history.pushState('forward', null, ''); 
+			            window.history.forward(1);
+			        });
+			    }
+			    window.history.pushState('forward', null, '');  //在IE中必须得有这两行
+			    window.history.forward(1);
+		});
+	</script>
 </head>
 <body>
 	<div class="htmleaf-container">
@@ -49,5 +62,6 @@
 		    </div>
 		    <div class="related"></div>
 	</div>
+
 </body>
 </html>

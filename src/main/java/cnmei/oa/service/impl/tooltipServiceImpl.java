@@ -78,4 +78,9 @@ public class tooltipServiceImpl implements TooltipService{
 		}
 		return resultBean;
 	}
+
+	@Override
+	public void deleteTipByEId(String eId) {
+		tooltipMapper.deleteTipByEID(eId);
+	}
 }

@@ -69,6 +69,9 @@
 	<select id="findRegular" resultType="Integer" parameterType="String">
 		select id from t_employee where regular_date_date = DATE_FORMAT(#{time}, '%Y-%m-%d') and on_job = 1
 	</select>
+	<select id="findContract" resultType="Integer" parameterType="String">
+		select id from t_employee where contract_end_date = DATE_FORMAT(#{time}, '%Y-%m-%d') and on_job = 1
+	</select>
 	<select id="findDateCount" resultType="Integer" parameterType="String">
 		SELECT COUNT(id) FROM t_employee WHERE  entry_date =  DATE_FORMAT(#{time}, '%Y-%m-%d')
 	</select>

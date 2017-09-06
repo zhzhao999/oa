@@ -16,4 +16,6 @@ public interface TooltipMapper {
 	void updateStatus(Integer id);
 
 	void updateFinStatus(Tooltip tooltip);
+
+	void deleteTipByEID(String id);
 }

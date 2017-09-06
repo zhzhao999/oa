@@ -15,5 +15,6 @@ public interface TooltipService {
 	List<TooltipVo> findToolTipVo(List<Tooltip> toolList);
 
 	ResultBean updateFinStatus(Integer id, boolean b);
-
+	
+	void deleteTipByEId(String eId);
 }
