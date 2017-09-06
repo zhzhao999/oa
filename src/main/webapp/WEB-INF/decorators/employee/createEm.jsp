@@ -18,6 +18,20 @@
 <form id="inputForm" action="${ctx}/employee/saveEmployee" method="post" class="form-horizontal">
 	<div class="modal-body">
 		<p class="alert alert-danger hide"></p>
+		<%-- <div class="needlogo">
+					<!-- <div class="needlogoimg"></div> -->
+					<div class="fileImg needlogoimg">
+						<div class="axImg">
+							<img id="imgChange0" class="img"
+								src="${ctx }/image/HeadImage.png" />
+							<!-- Unnamed () --> 
+						</div>
+						<!-- <input type="file" class="fileCss" name="images"> -->
+						<input id="upload-unitLogov"class="fileCss" type="file" name="unitLogov" id="unitLogov" placeholder="请输入..." >
+						<input id="upload-logo" type="hidden" name="logo" value="">
+					</div>
+					<p><a href="#" >上传头像(200*200)</a></p>
+				</div> --%>
 		<div class="form-group form-group-sm">
 			<label class="col-sm-3 control-label"><font color="red">*</font>姓名:</label>
 			<div class="col-sm-2 has-feedback">
@@ -148,7 +162,7 @@
 		</p>
 	</div>
 </form>
-
+<script src="${ctx }/js/changeImg.js" type="text/javascript"></script>
 <script type="text/javascript">
 //设置左侧菜单选中
 menu.active('#employee-add');

@@ -381,3 +381,43 @@ table.table > tbody > tr > td > a{ display:inline-block; }
 .table > tbody > tr > td, .table > tfoot > tr > td {
 	vertical-align:middle;
 }
+
+.needlogo {
+  cursor: pointer;
+  margin: 0 auto;
+  width: 200px;
+  height: 260px; }
+
+.needlogoimg {
+  margin-top:0;
+  margin-right:0;
+  height: 200px;
+  background: none; }
+.needlogo p {
+	margin-top:-10px;
+	text-align: center;
+}
+.needlogoimg .axImg {
+	left:0;
+	width:200px;
+	height:200px;
+}
+.needlogoimg .axImg img {
+	max-width:200px;
+	max-height:200px;
+}
+.needlogoimg .fileCss {
+	cursor:pointer;
+	position:absolute;
+	top:10px;
+	left:50%;
+	margin-left:-100px;
+	width:200px;
+	height:235px;
+	opacity:0;
+}
+.needlogo p a {
+  line-height: 40px;
+  color: #4a90e2;
+  text-decoration: underline;
+}
